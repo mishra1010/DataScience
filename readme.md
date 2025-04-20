@@ -1,0 +1,71 @@
+## Day1-Scenario explanation and Load Data
+Introduction
+
+Congratulations! You have just been hired as a Data Scientist Intern at CodeBook – The Social Media for Coders. This Delhi-based company is offering you a ₹10 LPA job if you successfully complete this 1-month internship. But before you get there, you must prove your skills using only Python—no pandas, NumPy, or fancy libraries!
+
+Your manager Puneet Kumar has assigned you your first task: analyzing a data dump of CodeBook users using pure Python. Your job is to load and explore the data to understand its structure.
+
+Task 1 - Load Data
+- User Data
+- Pages Data
+- Connetions Data
+
+Task 2 - Read and display data from data.json
+
+----Output-----
+Users and their connections
+
+ID:1 - Amit is friends with [2, 3] and liked pages are [101]
+ID:2 - Priya is friends with [1, 4] and liked pages are [102]
+ID:3 - Rahul is friends with [1] and liked pages are [101, 103]
+ID:4 - Sara is friends with [2] and liked pages are [104]
+
+.....Pages Information....
+101 : Python Developers
+102 : Data Science Enthusiasts
+103 : AI & ML Community
+104 : Web Dev Hub
+
+Next Exercise is - Data is not clean, so we need to clean and structure Data
+
+## Day2- Cleaning and Structuring the Data
+
+Introduction
+
+Your manager is impressed with your progress but points out that the data is messy. Before we can analyze it effectively, we need to clean and structure the data properly.
+
+Your task is to:
+
+    Handle missing values
+    Remove duplicate or inconsistent data
+    Standardize the data format
+
+Task 1  - Identify issues in Data
+
+{
+    "users": [
+        {"id": 1, "name": "Amit", "friends": [2, 3], "liked_pages": [101]},
+        {"id": 2, "name": "Priya", "friends": [1, 4], "liked_pages": [102]},
+        {"id": 3, "name": "", "friends": [1], "liked_pages": [101, 103]},
+        {"id": 4, "name": "Sara", "friends": [2, 2], "liked_pages": [104]},
+        {"id": 5, "name": "Amit", "friends": [], "liked_pages": []}
+    ],
+    "pages": [
+        {"id": 101, "name": "Python Developers"},
+        {"id": 102, "name": "Data Science Enthusiasts"},
+        {"id": 103, "name": "AI & ML Community"},
+        {"id": 104, "name": "Web Dev Hub"},
+        {"id": 104, "name": "Web Development"}
+    ]
+}
+
+Problems:
+
+    User ID 3 has an empty name.
+    User ID 4 has a duplicate friend entry.
+    User ID 5 has no connections or liked pages (inactive user).
+    The pages list contains duplicate page IDs.
+
+
+
+
