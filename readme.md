@@ -66,6 +66,21 @@ Problems:
     User ID 5 has no connections or liked pages (inactive user).
     The pages list contains duplicate page IDs.
 
+1. Remove empty names using strip function in list
+2. Remove duplicate friend entry by using set and converting back to list
+3. use for loop in list for checking no connection or liked pages using or condition, when both are false then the new list will not have the user id
+4. Remove duplicate page ids by using dictionary key, values- key canbe id and values can be the full list and 
+then make list with only dictionary values. key is always unique in dictionary
+
+Next is find friends you may knor. This can be achieved by suggesting friends based on mutual connections.
+
+## Day3 - Find People you may know
+
+Finding "People You May Know"
+
+Now that our data is cleaned and structured, your manager assigns you a new task: Build a 'People You May Know' feature!
+
+In social networks, this feature helps users connect with others by suggesting friends based on mutual connections. Your job is to analyze mutual friends and recommend potential connections.
 
 
 
