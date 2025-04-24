@@ -1,3 +1,10 @@
+Install Anaconda
+
+create new venv or work in base env
+Open anaconda command prompt, cd to folder where all code files will be stored
+type command
+(base) C:\DataScience>jupyter lab
+
 ## Day1-Scenario explanation and Load Data
 Introduction
 
