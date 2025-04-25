@@ -122,6 +122,6 @@ real difference is known with large data and with end-start times
 
 Arrays and properties
 flatten,reshape, dtype,ndim,shape,size,arange,linspace,zeros,ones,full
-np.array([]1,2,3)
+np.array([1,2,3])
 
 
