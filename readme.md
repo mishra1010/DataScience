@@ -118,6 +118,10 @@ Has built-in mathematical operations
 contiguois memory, 2D array needs to be of same size, else gives errors
 real difference is known with large data and with end-start times
 
+## Day6 - Creating Numpy arrays
 
+Arrays and properties
+flatten,reshape, dtype,ndim,shape,size,arange,linspace,zeros,ones,full
+np.array([]1,2,3)
 
 
