@@ -91,4 +91,33 @@ In social networks, this feature helps users connect with others by suggesting f
 
 ## Day4 - Finding pages you might like
 
+Like finding people you might know, find pages you may like and recommend
+
+import json
+load data in form of json
+find pages you might like
+    create a dictionary to store user id and pages liked
+    populate with data by running for loop
+    find shared pages between users and other users
+    suggest page not liked by an user with a score, if 2 user like a particular page and one of the users does not like a page which another user has liked, then suggest tat page with score 1, else 0
+    Created sorted list with page and score for ids
+    Display recommendations for a single userid
+
+## Day5 - Why use numpy
+
+Numpy - Numerical python library in python
+
+python list are flixible and numerical operations are slow because they store elements as pointers instead of a continuous block of memory. Example - python lists can store numbers, strings, lists inside lists and more lists and hence it becomes slow because of giving these functionalities as all operations are performed element by element.
+
+Numpy is a library which is written using a low-level C-optimized backend. C language is very close to hardware and hence faster than python. Speed is an issue with python when we scale. Ex - processing million rows takes long time for python
+
+faster
+uses less memory
+supports vectorized operations (no loops)
+Has built-in mathematical operations
+contiguois memory, 2D array needs to be of same size, else gives errors
+real difference is known with large data and with end-start times
+
+
+
 
