@@ -124,4 +124,33 @@ Arrays and properties
 flatten,reshape, dtype,ndim,shape,size,arange,linspace,zeros,ones,full
 np.array([1,2,3])
 
+## Day7 - Indexing and slicing
 
+index starts from 0
+Slicing returns view and not copy, so any change in the slice will affect the original array. This helps in
+Memory Efficiency - memory is saved as copy is not created and operations are faster
+Performance - Enables faster access and manipulation of large datasets without duplicating data
+
+use b=a[3:7].copy() to create a copy
+
+fancy indexing and boolean masking
+
+a = np.array([1,2,3,4,5,6,7,8])
+idx = [0,3,6]
+print(a[idx])
+
+a[a>3] ------- gives elements greater than 3
+
+## Day8 - Numpy Multidimensional indexing and Axis
+
+    Multidimensional arrays
+
+    Axis  - R, c and depth based on 1D, 2D and 3D
+
+    np.sum(arr, axis=1)
+
+    np.sum(arr, axis=0)
+
+    arr[0][1] and arr[0,1] --- same
+
+    arr[0:2, 1:3] #gives overlapping data
