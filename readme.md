@@ -184,3 +184,32 @@ array([[[ 0,  0,  0],
 3D - arr[depth, row, col]
 slicing allows extracting subarrays
 Operations along axes help efficiently manipulate data without loops
+
+## Day9 - Data types in Numpy
+
+arr = np.array([23,4,3,32]) - 16 bytes
+
+arr2 = np.array([23,4,3,32,1])
+arr2.nbytes # each number is 4 bytes and hence 5 elements *4 bytes= 20 bytes or int64 will make it 8 bytes each
+20 bytes
+
+Strings
+#Numpy is mainly used for numbers and so using strings is not a great idea
+arr3 = np.array(['a','b'], dtype='U10' or 'str')
+
+Complex Numbers (real part, imaginary part)
+arr = np.array([1+2j, 3+4j, 5+6j])
+
+arr = np.array([1+2j, 3+4j, 5+6j], dtype='complex128')
+print(arr)
+
+Dictionary - object Data type (not a great idea to use it as it will impact performance)
+
+arr = np.array([{'a':1}, [1,2,3], 'hello'], dtype=object)
+print(arr)
+
+[{'a': 1} list([1, 2, 3]) 'hello']
+
+Choose Right datatype- to optimize memory, Improve performance and precision
+
+Primarily useful for numbers and other data types will result in degraded performance
