@@ -213,3 +213,58 @@ print(arr)
 Choose Right datatype- to optimize memory, Improve performance and precision
 
 Primarily useful for numbers and other data types will result in degraded performance
+
+## Day10 - Numpy: Broadcasting
+
+#Speed Boost - Vectorization and Broadcasting
+
+Python loops are very slow as interpreter does sequential processing. Numpy is optimized for memory and computation
+
+Vectorization helps to fix the loop problem.
+
+arr = np.array([1,2,3,4,5])
+result = arr**2
+print(result)
+
+[ 1  4  9 16 25]
+
+Above operation is faster because numpy's vectorized operation is implemented in C language which is much faster than python loops
+
+Numpy also does Batch processing (multiple elements in parallel) using SIMD (Single instruction multiple data), allowing multiple operations to be done simultaneously. this is vectorization
+
+Broadcasting - Numpy automatically expands arrays of different shapes to make them compatible for element-wise operations without actually replicating data in memory
+
+result + 10 - Here scalar 10 is broadcasted across the entire array and no extra memory is used.
+
+array([11, 14, 19, 26, 35])
+
+A vector can also be broadcasted
+arr1 = np.array([[1,2,3],[4,5,6]])
+arr2 = np.array([1,2,3])
+result = arr1+arr2 # broadcasting arr2 across arr1
+print(result)
+
+output
+[[2 4 6]
+ [5 7 9]]
+
+For broadcasting to work-
+1. Array dimensions must be compatible- samme or one must be 1
+2. Stretching arrays - Numpy stretches the smaller array to match the larger one, element-wise, without copying data
+
+#Real world scenario for Broadcasting
+
+Normalization
+
+data = np.array([[10,20,30],[15,20,25],[2,4,6],[30,40,50]])
+mean = data.mean(axis=0)
+std = data.std(axis=0)
+
+normalized_data = (data-mean)/std
+print(normalized_data)
+
+Output
+[[-0.41637162 -0.07832604  0.14369225]
+ [ 0.07347734 -0.07832604 -0.17562387]
+ [-1.20012997 -1.33154276 -1.38902512]
+ [ 1.54302424  1.48819485  1.42095673]]
