@@ -154,3 +154,33 @@ a[a>3] ------- gives elements greater than 3
     arr[0][1] and arr[0,1] --- same
 
     arr[0:2, 1:3] #gives overlapping data
+
+# Selecting Data along Axes
+first_rows = arr3D[:,0,:] #Get first row from each sheet in a 3D array
+print(first_rows)
+
+arr3D
+array([[[ 1,  2,  3],
+        [ 4,  5,  6]],
+
+       [[ 7,  8,  9],
+        [10, 11, 12]]])
+
+output
+[[1 2 3]
+ [7 8 9]]
+
+ # changing data along an Axis
+
+arr3D[:,0,:] = 0
+
+array([[[ 0,  0,  0],
+        [ 4,  5,  6]],
+
+       [[ 0,  0,  0],
+        [10, 11, 12]]])
+
+2D - arr[row, col]
+3D - arr[depth, row, col]
+slicing allows extracting subarrays
+Operations along axes help efficiently manipulate data without loops
