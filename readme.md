@@ -268,3 +268,8 @@ Output
  [ 0.07347734 -0.07832604 -0.17562387]
  [-1.20012997 -1.33154276 -1.38902512]
  [ 1.54302424  1.48819485  1.42095673]]
+
+ ## Day 11- Numpy Builtin Mathematical Functions
+
+ np.mean(arr), np.min(arr), np.max(arr), np.std(arr), np.var(arr), np.sum(arr), np.median(arr), np.percentile(arr,50)
+ np.argmin(arr), np.argmax(arr), np.unique(arr), np.cumsum(arr)
