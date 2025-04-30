@@ -616,3 +616,130 @@ filtered = df.query("age < 50")
 - Filter with logical conditions or `.query()` for readable code  
 - Mastering selection makes the rest of pandas feel easy
  
+ ## Day 15 - Data cleaning and preprocessing
+
+ Real-world data is messy. Pandas gives us powerful tools to clean and transform data before analysis.
+
+---
+
+## Handling Missing Values
+
+### Check for Missing Data
+
+```python
+df.isnull()              # True for NaNs
+df.isnull().sum()        # Count missing per column
+```
+
+### Drop Missing Data
+
+```python
+df.dropna()              # Drop rows with *any* missing values
+df.dropna(axis=1)        # Drop columns with missing values
+```
+
+### Fill Missing Data
+
+In pandas, fillna is used to fill unknown values. ffill and bfill are methods used to fill missing values (like NaN, None, or pd.NA) by propagating values forward or backward.
+
+
+```python
+df.fillna(0)                     # Replace NaN with 0
+df["Age"].fillna(df["Age"].mean())  # Replace with mean
+df.ffill()      # Forward fill
+df.bfill()      # Backward fill
+```
+
+---
+
+## Detecting & Removing Duplicates
+
+df.duplicated() returns a boolean Series where:
+True means that row is a duplicate of a previous row.
+False means it's the first occurrence (not a duplicate yet).
+
+```python
+df.duplicated()          # True for duplicates
+df.drop_duplicates()     # Remove duplicate rows
+```
+
+Check based on specific columns:
+
+```python
+df.duplicated(subset=["Name", "Age"])
+```
+
+---
+
+## String Operations with `.str`
+
+Works like vectorized string methods and returns a pandas Series:
+
+```python
+df["Name"].str.lower() # Converts all names to lowercase.
+df["City"].str.contains("delhi", case=False) # Checks if 'delhi' is in the city name, case-insensitive.
+df["Email"].str.split("@") # Outputs a pandas Series where each element is a list of strings (the split parts). This is where a Python list comes into play, but the outer object is still a pandas Series.
+```
+
+We can always chain methods like `.str.strip().str.upper()` for clean-up.
+
+---
+
+## Type Conversions with `.astype()`
+
+Convert column data types:
+
+```python
+df["Age"] = df["Age"].astype(int)
+df["Date"] = pd.to_datetime(df["Date"])
+df["Category"] = df["Category"].astype("category")
+```
+
+### Why is pd.to_datetime() special?
+Unlike astype(), which works on simple data types (like integers, strings, etc.), pd.to_datetime() is designed to:
+
+- Handle different date formats (e.g., "YYYY-MM-DD", "MM/DD/YYYY", etc.).
+
+- Handle mixed types (e.g., some date strings, some NaT, or missing values).
+
+- Convert integer timestamps (e.g., UNIX time) into datetime objects.
+
+- Recognize timezones if provided.
+
+Check data types:
+
+```python
+df.dtypes
+```
+
+---
+
+## Applying Functions
+
+### `.apply()` → Apply any function to rows or columns
+
+```python
+df["Age Group"] = df["Age"].apply(lambda x: "Adult" if x >= 18 else "Minor")
+```
+
+### `.map()` → Element-wise mapping for Series
+
+```python
+gender_map = {"M": "Male", "F": "Female"}
+df["Gender"] = df["Gender"].map(gender_map)
+```
+
+### `.replace()` → Replace specific values
+
+```python
+df["City"].replace({"Del": "Delhi", "Mum": "Mumbai"})
+```
+
+---
+
+## Summary
+
+- Use `isnull()`, `fillna()`, `dropna()` for missing data  
+- Clean text with `.str`, convert types with `.astype()`  
+- Use `apply()`, `map()`, `replace()` to transform your columns  
+- Data cleaning is where 80% of your time goes in real projects
