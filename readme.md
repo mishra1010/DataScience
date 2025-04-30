@@ -396,3 +396,21 @@ Understanding Series & DataFrames will make everything else easier.
 * `Series` = 1D array with labels
 * `DataFrame` = 2D table with rows + columns
 * Both come with index and are the heart of Pandas
+
+## Day13 - Create Data frames
+1. Read from csv
+2. Read from Excel
+3. Read df from array
+4. Read df from json
+
+EDA - Exploratory data Analysis
+
+EDA is an essential first step in any data science project.
+it involves taking a deep look at the dataset to understand its structure, spot patterns, identify anomalies, and uncover relationship between variables.
+df.head()
+df.tail()
+df.info()
+df.shape
+df.describe()
+df.columns
+We can also run sql queries using pandas
