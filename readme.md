@@ -414,3 +414,205 @@ df.shape
 df.describe()
 df.columns
 We can also run sql queries using pandas
+
+## Day14 - Data Selection and Filtering
+
+we will come to know the power of Pandas
+
+ 
+# Data Selection & Filtering
+
+Selecting the right rows and columns is *the first step* in analyzing any dataset. Pandas gives you several powerful ways to do this.
+
+---
+
+## Selecting Rows & Columns
+
+### Selecting Columns
+
+```python
+df["column_name"]        # Single column (as Series)
+df[["col1", "col2"]]     # Multiple columns (as DataFrame)
+```
+
+### Selecting Rows by Index
+
+Use `.loc[]` (label-based) and `.iloc[]` (position-based):
+
+```python
+df.loc[0]                # First row (by label)
+df.iloc[0]               # First row (by position)
+```
+
+### Select Specific Rows and Columns
+
+```python
+df.loc[0, "Name"]        # Value at row 0, column 'Name'
+df.iloc[0, 1]            # Value at row 0, column at index 1
+```
+
+You can also slice:
+
+```python
+df.loc[0:2, ["Name", "Age"]]   # Rows 0 to 2, selected columns
+df.iloc[0:2, 0:2]              # Rows and cols by index position
+```
+
+---
+
+## Fast Access: `.at` and `.iat`
+
+These are optimized for **single element access**:
+
+```python
+df.at[0, "Name"]       # Fast label-based access
+df.iat[0, 1]           # Fast position-based access
+```
+
+---
+
+## Filtering with Conditions
+
+### Simple Condition
+
+```python
+df[df["Age"] > 30]
+```
+
+### Multiple Conditions (AND / OR)
+
+```python
+df[(df["Age"] > 25) & (df["City"] == "Delhi")]
+df[(df["Name"] == "Bob") | (df["Age"] < 30)]
+```
+
+> Use parentheses around each condition!
+
+---
+
+## Querying with `.query()`
+
+The `.query()` method in pandas lets you filter DataFrame rows using a string expression — it's a more readable and often more concise alternative to using boolean indexing.
+
+This is a cleaner, SQL-like way to filter:
+
+```python
+df.query("Age > 25 and City == 'Delhi'")
+```
+
+Dynamic column names:
+
+```python
+col = "Age"
+df.query(f"{col} > 25")
+```
+
+
+
+Here are the main **rules and tips** for using `.query()` in pandas:
+
+---
+
+### **1. Column names become variables**
+You can reference column names directly in the query string:
+
+```python
+df.query("age > 25 and city == 'Delhi'")
+```
+
+---
+
+### **2. String values must be in quotes**
+Use **single** or **double** quotes around strings in the expression:
+
+```python
+df.query("name == 'Harry'")
+```
+
+If you have quotes inside quotes, mix them:
+
+```python
+df.query('city == "Mumbai"')
+```
+
+---
+
+### **3. Use backticks for column names with spaces or special characters**
+If a column name has spaces, use backticks (`` ` ``):
+
+```python
+df.query("`first name` == 'Alice'")
+```
+
+---
+
+### **4. You can use `@` to reference Python variables**
+To pass external variables into `.query()`:
+
+```python
+age_limit = 30
+df.query("age > @age_limit")
+```
+
+---
+
+### **5. Logical operators**
+Use these:
+- `and`, `or`, `not` — instead of `&`, `|`, `~`
+- `==`, `!=`, `<`, `>`, `<=`, `>=`
+
+Bad:
+```python
+df.query("age > 30 & city == 'Delhi'")  # ❌
+```
+
+Good:
+```python
+df.query("age > 30 and city == 'Delhi'")  # ✅
+```
+
+---
+
+### **6. Chained comparisons**
+Just like Python:
+
+```python
+df.query("25 < age <= 40")
+```
+
+---
+
+### **7. Avoid using reserved keywords as column names**
+If you have a column named `class`, `lambda`, etc., you’ll need to use backticks:
+
+```python
+df.query("`class` == 'Physics'")
+```
+
+---
+
+### **8. Case-sensitive**
+Column names and string values are case-sensitive:
+
+```python
+df.query("City == 'delhi'")  # ❌ if actual value is 'Delhi'
+```
+
+---
+
+### **9. `.query()` returns a **copy**, not a view**
+The result is a new DataFrame. Changes won't affect the original unless reassigned:
+
+```python
+filtered = df.query("age < 50")
+```
+
+---
+
+
+## Summary
+
+- Use `df[col]`, `.loc[]`, `.iloc[]`, `.at[]`, `.iat[]` to access data  
+- Filter with logical conditions or `.query()` for readable code  
+- Mastering selection makes the rest of pandas feel easy
+ 
