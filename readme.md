@@ -273,3 +273,126 @@ Output
 
  np.mean(arr), np.min(arr), np.max(arr), np.std(arr), np.var(arr), np.sum(arr), np.median(arr), np.percentile(arr,50)
  np.argmin(arr), np.argmax(arr), np.unique(arr), np.cumsum(arr)
+
+## Day 12 - Getting started with Pandas
+
+powerful open source python library used for data manipulation, cleaning and analysis. it's built on Numpy. It uses 2 main data structures
+
+1. Series : 1D-labeled array
+2. Dataframe : 2D- labeled table(like Excel or SQL table)
+
+Pandas is to be used when we work with tables, spreadsheets or csvs in python. it makes structured data fast, expressive and flexible.
+Pandas has the speed of numpy and usability of excel. Anytime we work with structured data we will use pandas. Any dastscientist will be using Pandas
+
+
+# Core Data Structures in Pandas
+
+Pandas is built on **two main data structures**:
+
+1. **Series** → One-dimensional (like a single column in Excel)
+2. **DataFrame** → Two-dimensional (like a full spreadsheet or SQL table)
+
+***
+
+## Series — 1D Labeled Array
+
+A `Series` is like a list with **labels (index)**.
+
+```python
+import pandas as pd
+
+s = pd.Series([10, 20, 30, 40])
+print(s)
+```
+
+**Output:**
+
+```
+0    10
+1    20
+2    30
+3    40
+dtype: int64
+```
+
+Notice the **automatic index**: 0, 1, 2, 3
+
+You can also define a custom index:
+
+```python
+s = pd.Series([10, 20, 30], index=["a", "b", "c"])
+```
+
+A `pandas.Series` may look similar to a Python dictionary because both store data with labels, but a Series offers much more. Unlike a dictionary, a Series supports fast vectorized operations, automatic index alignment during arithmetic, and handles missing data using `NaN`. It also allows both label-based and position-based access, and integrates seamlessly with the pandas ecosystem, especially DataFrames. While a dictionary is great for simple key–value storage, a Series is better suited for data analysis and manipulation tasks where performance, flexibility, and built-in functionality matter.
+
+***
+
+## DataFrame — 2D Labeled Table
+
+A `DataFrame` is like a **dictionary of Series** — multiple columns with labels.
+
+```python
+data = {
+    "name": ["Alice", "Bob", "Charlie"],
+    "age": [25, 30, 35],
+    "city": ["Delhi", "Mumbai", "Bangalore"]
+}
+
+df = pd.DataFrame(data)
+print(df)
+```
+
+**Output:**
+
+```
+     name  age      city
+0   Alice   25     Delhi
+1     Bob   30    Mumbai
+2  Charlie   35  Bangalore
+```
+
+Each column in a `DataFrame` is a `Series`.
+
+***
+
+## Index and Labels
+
+Every Series and DataFrame has an **Index** — it helps with:
+
+* Fast lookups
+* Aligning data
+* Merging & joining
+* Time series operations
+
+```python
+df.index         # Row labels
+df.columns       # Column labels
+```
+
+You can change them using:
+
+```python
+df.index = ["a", "b", "c"]
+df.columns = ["Name", "Age", "City"]
+```
+
+***
+
+## Why Learn These Well?
+
+Most Pandas operations are built on these foundations:
+
+* Selection
+* Filtering
+* Merging
+* Aggregation
+
+Understanding Series & DataFrames will make everything else easier.
+
+***
+
+## Summary
+
+* `Series` = 1D array with labels
+* `DataFrame` = 2D table with rows + columns
+* Both come with index and are the heart of Pandas
