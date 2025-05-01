@@ -743,3 +743,84 @@ df["City"].replace({"Del": "Delhi", "Mum": "Mumbai"})
 - Clean text with `.str`, convert types with `.astype()`  
 - Use `apply()`, `map()`, `replace()` to transform your columns  
 - Data cleaning is where 80% of your time goes in real projects
+
+
+## Day 16 - Data Transformation
+
+# Data Transformation
+
+Once your data is clean, the next step is to **reshape, reformat, and reorder** it as needed for analysis. Pandas gives you plenty of flexible tools to do this.
+
+---
+
+## Sorting & Ranking
+
+### Sort by Values
+
+```python
+df.sort_values("Age")                   # Ascending sort
+df.sort_values("Age", ascending=False)  # Descending
+df.sort_values(["Age", "Salary"])       # Sort by multiple columns
+```
+df.sort_values(["Age", "Salary"]) sorts the DataFrame first by the "Age" column, and if there are ties (i.e., two or more rows with the same "Age"), it will sort by the "Salary" column.
+
+### Reset Index
+If you want the index to start from 0 and be sequential, you can reset it using reset_index()
+```python
+df.reset_index(drop=True, inplace=True)  # Reset the index and drop the old index
+```
+### Sort by Index
+
+```python
+df.sort_index()
+```
+The df.sort_index() function is used to sort the DataFrame based on its index values. If the index is not in a sequential order (e.g., you have dropped rows or performed other operations that change the index), you can use sort_index() to restore it to a sorted order.
+### Ranking
+The .rank() function in pandas is used to assign ranks to numeric values in a column, like scores or points. By default, it gives the average rank to tied values, which can result in decimal numbers. For example, if two people share the top score, they both get a rank of 1.5. You can customize the ranking behavior using the method parameter. One useful option is method='dense', which assigns the same rank to ties but doesn’t leave gaps in the ranking sequence. This is helpful when you want a clean, consecutive ranking system without skips.
+```python
+df["Rank"] = df["Score"].rank()                 # Default: average method
+df["Rank"] = df["Score"].rank(method="dense")   # 1, 2, 2, 3
+```
+
+---
+
+## Renaming Columns & Index
+
+```python
+df.rename(columns={"oldName": "newName"}, inplace=True)
+df.rename(index={0: "row1", 1: "row2"}, inplace=True)
+```
+
+To rename all columns:
+
+```python
+df.columns = ["Name", "Age", "City"]
+```
+
+---
+
+## Changing Column Order
+
+Just pass a new list of column names:
+
+```python
+df = df[["City", "Name", "Age"]]   # Reorder as desired
+```
+
+You can also move one column to the front:
+
+```python
+cols = ["Name"] + [col for col in df.columns if col != "Name"]
+df = df[cols]
+```
+
+---
+
+
+
+## Summary
+
+- Sort, rank, and rename to prepare your data    
+- Reordering and reshaping are key for EDA and visualization
+
+ 
