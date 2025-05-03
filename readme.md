@@ -824,3 +824,182 @@ df = df[cols]
 - Reordering and reshaping are key for EDA and visualization
 
  
+ ## Day 17 - Melt and Pivot Methods in Pandas
+
+ # Reshaping Data using Melt and Pivot
+
+## `melt()` — Wide to Long
+The `melt()` method in Pandas is used to **unpivot** a DataFrame from wide format to long format. In other words, it takes columns that represent different variables and combines them into key-value pairs (i.e., long-form data).
+
+### When to Use `melt()`:
+- When you have a DataFrame where each row is an observation, and each column represents a different variable or measurement, and you want to reshape the data into a longer format for easier analysis or visualization.
+
+### Syntax:
+```python
+df.melt(id_vars=None, value_vars=None, var_name=None, value_name="value", col_level=None)
+```
+
+### Parameters:
+- **`id_vars`**: The columns that you want to keep fixed (these columns will remain as identifiers).
+- **`value_vars`**: The columns you want to unpivot (the ones you want to "melt" into a single column).
+- **`var_name`**: The name to use for the new column that will contain the names of the melted columns (default is `'variable'`).
+- **`value_name`**: The name to use for the new column that will contain the values from the melted columns (default is `'value'`).
+- **`col_level`**: Used for multi-level column DataFrames. 
+
+### Example:
+Use this code to generate the Dataframe
+
+```python
+import pandas as pd
+
+# Sample DataFrame
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie'],
+    'Math': [85, 78, 92],
+    'Science': [90, 82, 89],
+    'English': [88, 85, 94]
+}
+
+df = pd.DataFrame(data)
+
+# Display the DataFrame
+print(df)
+
+```
+
+Let's say we have the following DataFrame in a wide format:
+
+| Name   | Math | Science | English |
+|--------|------|---------|---------|
+| Alice  | 85   | 90      | 88      |
+| Bob    | 78   | 82      | 85      |
+| Charlie| 92   | 89      | 94      |
+
+### Using `melt()`:
+If we want to "melt" the DataFrame so that each row represents a student-subject pair, we can do:
+
+```python
+df.melt(id_vars=["Name"], value_vars=["Math", "Science", "English"], var_name="Subject", value_name="Score")
+```
+
+This will result in the following long-format DataFrame:
+
+| Name   | Subject | Score |
+|--------|---------|-------|
+| Alice  | Math    | 85    |
+| Alice  | Science | 90    |
+| Alice  | English | 88    |
+| Bob    | Math    | 78    |
+| Bob    | Science | 82    |
+| Bob    | English | 85    |
+| Charlie| Math    | 92    |
+| Charlie| Science | 89    |
+| Charlie| English | 94    |
+
+### Explanation:
+- **`id_vars=["Name"]`**: We keep the "Name" column as it is because it's the identifier.
+- **`value_vars=["Math", "Science", "English"]`**: These are the columns we want to melt.
+- **`var_name="Subject"`**: The new column containing the names of the subjects.
+- **`value_name="Score"`**: The new column containing the scores.
+
+### Why Use `melt()`?
+- **Data normalization**: Helps in transforming data for statistical modeling and data visualization.
+- **Pivot tables**: Many times, plotting functions or statistical models work better with long-format data.
+ 
+
+This is useful for converting columns into rows — perfect for plotting or tidy data formats.
+
+## `pivot()` — Long to Wide
+
+The `pivot()` function in Pandas is used to **reshape** data, specifically to **turn long-format data into wide-format data**. This is the reverse operation of `melt()`.
+
+### How it works:
+- **`pivot()`** takes a **long-format DataFrame** and **turns it into a wide-format DataFrame** by specifying which columns will become the new columns, the rows, and the values.
+
+### Syntax:
+```python
+df.pivot(index=None, columns=None, values=None)
+```
+
+### Parameters:
+- **`index`**: The column whose unique values will become the rows of the new DataFrame.
+- **`columns`**: The column whose unique values will become the columns of the new DataFrame.
+- **`values`**: The column whose values will fill the new DataFrame. These will become the actual data (values in the table).
+
+### Example:
+
+Suppose we have the following long-format DataFrame:
+
+| Name   | Subject | Score |
+|--------|---------|-------|
+| Alice  | Math    | 85    |
+| Alice  | Science | 90    |
+| Alice  | English | 88    |
+| Bob    | Math    | 78    |
+| Bob    | Science | 82    |
+| Bob    | English | 85    |
+| Charlie| Math    | 92    |
+| Charlie| Science | 89    |
+| Charlie| English | 94    |
+
+### Using `pivot()` to reshape it into wide format:
+
+```python
+df.pivot(index="Name", columns="Subject", values="Score")
+```
+
+### Resulting DataFrame:
+
+| Name    | English | Math | Science |
+|---------|---------|------|---------|
+| Alice   | 88      | 85   | 90      |
+| Bob     | 85      | 78   | 82      |
+| Charlie | 94      | 92   | 89      |
+
+### Explanation:
+- **`index="Name"`**: The unique values in the "Name" column will become the rows in the new DataFrame.
+- **`columns="Subject"`**: The unique values in the "Subject" column will become the columns in the new DataFrame.
+- **`values="Score"`**: The values from the "Score" column will populate the table.
+
+### Why use `pivot()`?
+
+1. **Better data structure**: It makes data easier to analyze when you have categories that you want to split into multiple columns.
+2. **Easier visualization**: Often, you want to represent data in a format where categories are split across columns (for example, when creating pivot tables for reporting).
+3. **Aggregating data**: You can perform aggregations (like `sum`, `mean`, etc.) to group values before pivoting.
+
+### Important Notes:
+1. **Duplicate Entries**: If you have multiple rows with the same combination of `index` and `columns`, **pivot()** will raise an error. In such cases, you should use `pivot_table()` (which can handle duplicate entries by aggregating them).
+
+### Example of `pivot_table()` to handle duplicates:
+
+Suppose the DataFrame is like this (with duplicate entries):
+
+| Name   | Subject | Score |
+|--------|---------|-------|
+| Alice  | Math    | 85    |
+| Alice  | Math    | 80    |
+| Alice  | Science | 90    |
+| Bob    | Math    | 78    |
+| Bob    | Math    | 82    |
+
+We can use **`pivot_table()`** to aggregate values (e.g., taking the **mean** for duplicate entries):
+
+```python
+df.pivot_table(index="Name", columns="Subject", values="Score", aggfunc="mean")
+```
+
+### Resulting DataFrame:
+
+| Name   | Math | Science |
+|--------|------|---------|
+| Alice  | 82.5 | 90      |
+| Bob    | 80   | NaN     |
+
+In this case, the **Math** score for Alice is averaged (85 + 80) / 2 = 82.5. If a cell is empty, it means there was no value for that combination.
+
+### Summary:
+- Use `melt()` to go long, `pivot()` to go wide  
+- **`pivot()`** is used to turn long-format data into wide-format by spreading unique column values into separate columns.
+- If there are **duplicate values** for a given combination of `index` and `columns`, you should use **`pivot_table()`** with an aggregation function to handle the duplicates.
+ 
+ 
