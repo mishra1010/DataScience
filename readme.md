@@ -1002,4 +1002,123 @@ In this case, the **Math** score for Alice is averaged (85 + 80) / 2 = 82.5. If 
 - **`pivot()`** is used to turn long-format data into wide-format by spreading unique column values into separate columns.
 - If there are **duplicate values** for a given combination of `index` and `columns`, you should use **`pivot_table()`** with an aggregation function to handle the duplicates.
  
+ ## Day 18 - Aggregation and Grouping
+
+ # Aggregation & Grouping
+
+Grouping and aggregating helps you **summarize your data** — like answering:  
+> “What’s the average salary *per department*?”  
+> “How many users joined the Gym *per month*?”
+
+---
+
+## `.groupby()` Function
+
+df.groupby() is used to group rows of a DataFrame based on the values in one or more columns, which allows you to then perform aggregate functions (like sum(), mean(), count(), etc.) on each group.
+Consider this DataFrame:
+
+```python 
+df = pd.DataFrame({
+    "Department": ["HR", "HR", "IT", "IT", "Marketing", "Marketing", "Sales", "Sales"],
+    "Team": ["A", "A", "B", "B", "C", "C", "D", "D"],
+    "Gender": ["M", "F", "M", "F", "M", "F", "M", "F"],
+    "Salary": [85, 90, 78, 85, 92, 88, 75, 80],
+    "Age": [23, 25, 30, 22, 28, 26, 21, 27],
+    "JoinDate": pd.to_datetime([
+        "2020-01-10", "2020-02-15", "2021-03-20", "2021-04-10",
+        "2020-05-30", "2020-06-25", "2021-07-15", "2021-08-01"
+    ])
+})  
+
+```
+
+```python
+df.groupby("Department")["Salary"].mean()
+```
+
+This says:  
+> “Group by Department, then calculate average Salary for each group.”
+
+---
+
+## Common Aggregation Functions
+
+```python
+df.groupby("Team")["Salary"].mean()     # Average per team
+df.groupby("Team")["Salary"].sum()      # Total score
+df.groupby("Team")["Salary"].count()    # How many entries
+df.groupby("Team")["Salary"].min()
+df.groupby("Team")["Salary"].max()
+```
+
+To group by multiple columns:
+
+```python
+df.groupby(["Team", "Gender"])["Salary"].mean()
+```
+
+---
+
+## Custom Aggregations with `.agg()`
+
+Apply **multiple functions** at once like this:
+
+```python
+df.groupby("Team")["Salary"].agg(["mean", "max", "min"])
+```
+In pandas, .agg and .aggregate are exactly the same — they're aliases for the same method
+
+Name your own functions:
+
+```python
+df.groupby("Team")["Salary"].agg(
+    avg_score="mean",
+    high_score="max"
+)
+```
+
+Apply different functions to different columns:
+
+```python
+df.groupby("Team").agg({
+    "Salary": "mean",
+    "Age": "max"
+})
+```
+
+---
+
+## Transform vs Aggregate vs Filter
+
+| Operation | Returns | When to Use |
+|-----------|---------|-------------|
+| `.aggregate()` | Single value per group | Summary (like mean) |
+| `.transform()` | Same shape as original | Add new column based on group |
+| `.filter()`    | Subset of rows | Keep/discard whole groups |
+
+### `.transform()` Example:
+
+```python
+df["Team Avg"] = df.groupby("Team")["Salary"].transform("mean")
+```
+
+Now each row gets its **team average** — great for comparisons!
+
+### `.filter()` Example:
+
+```python
+df.groupby("Team").filter(lambda x: x["Salary"].mean() > 80)
+```
+
+Only keeps teams with average score > 80.
+
+---
+
+## Summary
+
+- `.groupby()` helps you summarize large datasets by category  
+- Use `mean()`, `sum()`, `count()`, `.agg()` for custom metrics  
+- `.transform()` adds values back to original rows  
+- `.filter()` keeps only groups that meet conditions
+
  
