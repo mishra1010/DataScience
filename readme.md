@@ -1709,3 +1709,168 @@ Create a side-by-side bar chart comparing runs of Sachin, Kohli, and Sehwag over
 Then create a horizontal bar chart showing total runs scored in their debut 5 years.
 
  
+## Day 24- Pie charts in Matplotlib
+
+# Matplotlib Pie Charts
+
+Pie charts are used to show **part-to-whole relationships**. They're visually appealing but best used with **fewer categories**, as too many slices can get cluttered and hard to interpret.
+
+---
+
+## Setting a Style
+
+```python
+import matplotlib.pyplot as plt
+
+plt.style.use("ggplot")  # Choose any style you like
+```
+
+---
+
+## Basic Pie Chart Example
+
+```python
+# Data
+labels = ["Sachin", "Sehwag", "Kohli", "Yuvraj"]
+runs = [18000, 8000, 12000, 9500]
+
+plt.title("Career Runs of Indian Batsmen")
+plt.pie(runs, labels=labels)
+plt.show()
+```
+
+---
+
+## Custom Colors
+
+You can use color names or hex codes.
+
+```python
+colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
+plt.pie(runs, labels=labels, colors=colors)
+plt.show()
+```
+
+---
+
+## Add Edges and Style Slices with `wedgeprops`
+
+You can customize the look of the slices using `wedgeprops`.
+
+```python
+plt.pie(
+    runs,
+    labels=labels,
+    colors=colors,
+    wedgeprops={'edgecolor': 'black', 'linewidth': 2, 'linestyle': '--'}
+)
+plt.show()
+```
+
+**Tip**: You can Google “matplotlib wedgeprops” for more customization options.
+
+Visit [this documentation page](https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Wedge.html) for more
+
+---
+
+## Highlight a Slice Using `explode`
+
+Use `explode` to **pull out** one or more slices.
+
+```python
+explode = [0.1, 0, 0, 0]  # Only highlight Sachin's slice
+
+plt.pie(runs, labels=labels, explode=explode, colors=colors)
+plt.title("Exploded Pie Example")
+plt.show()
+```
+
+---
+
+## Add Shadows for a 3D Feel
+
+```python
+plt.pie(
+    runs,
+    labels=labels,
+    explode=explode,
+    colors=colors,
+    shadow=True  # adds a 3D-like shadow
+)
+plt.show()
+```
+
+---
+
+## Start Angle
+
+Use `startangle` to rotate the pie for better alignment.
+
+```python
+plt.pie(
+    runs,
+    labels=labels,
+    explode=explode,
+    colors=colors,
+    shadow=True,
+    startangle=140
+)
+plt.show()
+```
+
+---
+
+## Show Percentages with `autopct`
+
+```python
+plt.pie(
+    runs,
+    labels=labels,
+    autopct='%1.1f%%',
+    startangle=140
+)
+plt.title("Career Run Share")
+plt.show()
+```
+
+---
+
+## Crowded Pie Chart – Why to Avoid
+
+```python
+# Too many categories
+languages = ['Python', 'Java', 'C++', 'JavaScript', 'C#', 'Ruby', 'Go', 'Rust', 'Swift', 'PHP']
+usage = [30, 20, 10, 10, 7, 5, 4, 3, 2, 1]
+
+plt.pie(usage, labels=languages, autopct='%1.1f%%', startangle=90)
+plt.title("Programming Language Usage (Crowded Example)")
+plt.show()
+```
+
+**Why avoid it?**  
+- Hard to compare slice sizes visually  
+- Cluttered and confusing  
+- No clear insight  
+**Better alternatives:** bar charts or horizontal bar charts
+
+---
+
+## Summary of Useful Pie Chart Parameters
+
+| Parameter     | Use                                                |
+|---------------|-----------------------------------------------------|
+| `labels`      | Label each slice                                    |
+| `colors`      | Customize slice colors (names or hex)              |
+| `explode`     | Pull out slices for emphasis                        |
+| `shadow`      | Adds depth-like shadow                              |
+| `startangle`  | Rotates pie to start from a different angle         |
+| `autopct`     | Shows percentage text on slices                     |
+| `wedgeprops`  | Customize slice edge, fill, width, etc.             |
+
+---
+
+**Assignment:**  
+Create a pie chart showing the market share of mobile OS (Android, iOS, others). Then recreate the same using a horizontal bar chart and observe which is easier to understand.
+
+---
+ 
