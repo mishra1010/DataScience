@@ -1121,4 +1121,123 @@ Only keeps teams with average score > 80.
 - `.transform()` adds values back to original rows  
 - `.filter()` keeps only groups that meet conditions
 
+ ## Day 19 - Merging and Joining Data
+
+ # Merging & Joining Data
+
+Often, data is split across multiple tables or files. Pandas lets you **combine** them just like SQL — or even more flexibly!
+
+---
+
+## Sample DataFrames
+
+```python
+employees = pd.DataFrame({
+    "EmpID": [1, 2, 3],
+    "Name": ["Alice", "Bob", "Charlie"],
+    "DeptID": [10, 20, 30]
+})
+
+departments = pd.DataFrame({
+    "DeptID": [10, 20, 40],
+    "DeptName": ["HR", "Engineering", "Marketing"]
+})
+```
+
+---
+
+## Merge Like SQL: `pd.merge()`
+
+### Inner Join (default)
+
+```python
+pd.merge(employees, departments, on="DeptID")
+```
+
+Returns only matching DeptIDs:
+
+| EmpID | Name    | DeptID | DeptName    |
+|--------|---------|--------|-------------|
+| 1      | Alice   | 10     | HR          |
+| 2      | Bob     | 20     | Engineering |
+
+---
+
+### Left Join
+
+```python
+pd.merge(employees, departments, on="DeptID", how="left")
+```
+
+Keeps all employees, fills `NaN` where no match.
+
+---
+
+### Right Join
+
+```python
+pd.merge(employees, departments, on="DeptID", how="right")
+```
+
+Keeps all departments, even if no employee.
+
+---
+
+### Outer Join
+
+```python
+pd.merge(employees, departments, on="DeptID", how="outer")
+```
+
+Includes *all* data, fills missing with `NaN`.
+
+
+---
+
+## Concatenating DataFrames
+
+Use `pd.concat()` to **stack** datasets either vertically or horizontally.
+
+### Vertical (rows)
+
+```python
+df1 = pd.DataFrame({"Name": ["Alice", "Bob"]})
+df2 = pd.DataFrame({"Name": ["Charlie", "David"]})
+
+pd.concat([df1, df2])
+```
+
+### Horizontal (columns)
+
+```python
+df1 = pd.DataFrame({"ID": [1, 2]})
+df2 = pd.DataFrame({"Score": [90, 80]})
+
+pd.concat([df1, df2], axis=1)
+```
+
+> Make sure indexes align when using `axis=1`
+
+---
+
+## When to Use What?
+
+| Use Case                        | Method     |
+|---------------------------------|------------|
+| SQL-style joins (merge keys)    | `pd.merge()` or `.join()` |
+| Stack datasets vertically       | `pd.concat([df1, df2])`   |
+| Combine different features side-by-side | `pd.concat([df1, df2], axis=1)` |
+| Align on index                 | `.join()` or merge with `right_index=True` |
+
+---
+
+## Summary
+
+- Use `merge()` like SQL joins (`inner`, `left`, `right`, `outer`)  
+- Use `concat()` to stack DataFrames (rows or columns)  
+- Handle mismatched keys and indexes with care  
+- Merging and joining are essential for real-world projects
+
+ 
+ ## Day 20 - Working with CSVs
  
