@@ -1240,4 +1240,63 @@ pd.concat([df1, df2], axis=1)
 
  
  ## Day 20 - Working with CSVs
+ # Reading & Writing Files in Pandas
+
+## CSV Files
+
+### Read CSV
+```python
+df = pd.read_csv("data.csv")
+```
+
+Options:
+```python
+pd.read_csv("data.csv", usecols=["Name", "Age"], nrows=10)
+```
+
+### Write CSV
+```python
+df.to_csv("output.csv", index=False)
+```
+
+---
+
+## Excel Files
+
+### Read Excel
+```python
+df = pd.read_excel("data.xlsx")
+```
+
+Options:
+```python
+pd.read_excel("data.xlsx", sheet_name="Sales")
+```
+
+### Write Excel
+```python
+df.to_excel("output.xlsx", index=False)
+```
+
+Multiple sheets:
+```python
+with pd.ExcelWriter("report.xlsx") as writer:
+    df1.to_excel(writer, sheet_name="Summary", index=False)
+    df2.to_excel(writer, sheet_name="Details", index=False)
+```
+
+---
+
+## JSON Files
+
+### Read JSON
+```python
+df = pd.read_json("data.json")
+```
+
+
+## Summary
+
+- `read_*` and `to_*` methods for CSV, Excel, JSON
+- Use `sheet_name` for Excel 
  
