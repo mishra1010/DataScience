@@ -1300,3 +1300,268 @@ df = pd.read_json("data.json")
 - `read_*` and `to_*` methods for CSV, Excel, JSON
 - Use `sheet_name` for Excel 
  
+ ## Day 21 - Data Visualization
+
+ Why Data Visualization is Important
+
+Data visualization is the bridge between raw data and human understanding. When done right, it helps:
+
+Reveal patterns, trends, and correlations in the data.
+Communicate insights clearly to stakeholders.
+Speed up decision-making by simplifying complex datasets.
+Make data storytelling engaging and accessible to all.
+A picture is worth a thousand words
+
+“The greatest value of a picture is when it forces us to notice what we never expected to see.” – John Tukey
+
+Exploratory vs Explanatory Visuals
+
+Exploratory Visualizations
+Purpose: Explore the data, uncover insights, find patterns.
+Audience: You (the data analyst/scientist).
+Example: Pair plots, correlation heatmaps, scatter matrix.
+
+Explanatory Visualizations
+Purpose: Communicate a specific insight or story.
+Audience: Stakeholders, clients, public.
+
+Example: A bar chart in a presentation showing sales trends.
+Aspect	Exploratory	Explanatory
+Goal	Find insights	Communicate insights
+
+Audience	Analyst / Data Scientist	Stakeholders / Public
+Style	Raw, fast, flexible	Polished, focused, clean
+Basic Principles of Good Visualizations
+Clarity
+Avoid clutter. Use labels, legends, and proper axis scales.
+
+# Table 
+Aspect	Exploratory	Explanatory
+Goal	Find insights	Communicate insights
+Audience	Analyst / Data Scientist	Stakeholders / Public
+Style	Raw, fast, flexible	Polished, focused, clean
+
+# Basic Principles of Good Visualizations
+Clarity
+Avoid clutter. Use labels, legends, and proper axis scales.
+
+Context
+Always provide context: What is being measured? Over what time frame? In what units?
+
+Focus
+Highlight the key insight. Use colors and annotations to draw attention.
+
+Storytelling
+Don’t just show data — tell a story. Guide the viewer through a narrative.
+
+Accessibility
+Use carefully chosen color palettes that enhance readability for all viewers.
+
+## Day22 - MatplotLib Intro
+
+# Introduction to Matplotlib
+
+Today, we’ll cover the **basics of Matplotlib** — the most fundamental plotting library in Python. By the end, you’ll understand how to make clean and powerful plots, step by step.
+
+---
+
+## What is `matplotlib.pyplot`?
+
+- `matplotlib.pyplot` is a module in Matplotlib — it's like a paintbrush for your data.
+- We usually import it as `plt`:
+
+```python
+import matplotlib.pyplot as plt
+```
+
+> `plt` is just a short alias to save typing!
+
+---
+
+## What is `plt.show()`?
+
+- `plt.show()` is used to **display the plot**.
+- Without it, in scripts, you might not see the plot window.
+
+```python
+plt.plot([1, 2, 3], [4, 5, 6])
+plt.show()
+```
+
+---
+
+## Interacting with the Plot
+
+When a plot appears, you can:
+
+- Zoom In/Out  
+- Pan around  
+- Use arrows to navigate history  
+- Reset to home  
+- Save as PNG using the disk icon  
+
+> These features are **automatically included** in the plot window!
+
+---
+
+## Real Data Example: Sachin Tendulkar’s Runs Over Time
+
+```python
+years = [1990, 1992, 1994, 1996, 1998, 2000, 2003, 2005, 2007, 2010]
+runs =  [500, 700, 1100, 1500, 1800, 1200, 1700, 1300, 900, 1500]
+
+plt.plot(years, runs)
+plt.show()
+```
+
+---
+
+## Adding X and Y Labels
+
+```python
+plt.plot(years, runs)
+plt.xlabel("Year")
+plt.ylabel("Runs Scored")
+plt.title("Sachin Tendulkar's Yearly Runs")
+plt.show()
+```
+
+---
+
+## Multiple Lines in One Plot
+
+```python
+kohli = [0, 0, 500, 800, 1100, 1300, 1500, 1800, 1900, 2100]
+sehwag = [0, 300, 800, 1200, 1500, 1700, 1600, 1400, 1000, 0]
+
+plt.plot(years, kohli, label="Virat Kohli")
+plt.plot(years, sehwag, label="Virender Sehwag")
+
+plt.xlabel("Year")
+plt.ylabel("Runs Scored")
+plt.title("Performance Comparison")
+plt.legend()
+plt.show()
+```
+
+---
+
+## Why `label` is Better than List in `legend`
+
+Bad practice:
+
+```python
+plt.plot(years, kohli)
+plt.plot(years, sehwag)
+plt.legend(["Kohli", "Sehwag"])  # prone to mismatch
+```
+
+Better:
+
+```python
+plt.plot(years, kohli, label="Kohli")
+plt.plot(years, sehwag, label="Sehwag")
+plt.legend()
+```
+
+---
+
+## Using Format Strings
+
+```python
+plt.plot(years, kohli, 'ro--', label="Kohli")  # red circles with dashed lines
+plt.plot(years, sehwag, 'g^:', label="Sehwag")  # green triangles dotted
+plt.legend()
+```
+
+---
+
+## Color and Line Style Arguments
+
+```python
+plt.plot(years, kohli, color='orange', linestyle='--', label="Kohli")
+plt.plot(years, sehwag, color='green', linestyle='-.', label="Sehwag")
+plt.plot(years, runs, color='blue', label="Tendulkar")
+plt.legend()
+```
+
+---
+
+## Line Width and Layout Tweaks
+
+```python
+plt.plot(years, kohli, linewidth=3, label="Kohli")
+plt.plot(years, sehwag, linewidth=2, label="Sehwag")
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+```
+
+---
+
+## Using Styles in Matplotlib
+
+```python
+print(plt.style.available)
+```
+
+Try a few:
+
+```python
+plt.style.use("ggplot")
+# or
+plt.style.use("seaborn-v0_8-bright")
+```
+
+---
+
+## XKCD Comic Style
+
+```python
+with plt.xkcd():
+    plt.plot(years, kohli, label="Kohli")
+    plt.plot(years, sehwag, label="Sehwag")
+    plt.title("Epic Battle of the Batsmen")
+    plt.legend()
+    plt.show()
+```
+
+---
+
+## Visualizing Tons of Data – What Crowded Looks Like
+
+```python
+import numpy as np
+
+for i in range(50):
+    plt.plot(np.random.rand(100), linewidth=1)
+
+plt.title("Too Much Data Can Be Confusing!")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+```
+
+---
+
+## Final Tips for Beginners
+
+- Always start with simple plots
+- Add labels and legends early
+- Use `plt.grid()` and `plt.tight_layout()` to improve readability
+- Try different styles to find what works for your use case
+
+---
+
+**Assignment:**  
+Create a plot comparing **Kohli**, **Rohit Sharma**, and **Sehwag** across 10 years of hypothetical runs.  
+Use:
+- Labels
+- Legends
+- Colors
+- Line styles
+- One custom style
+
+
+
