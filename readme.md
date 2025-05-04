@@ -1564,4 +1564,148 @@ Use:
 - One custom style
 
 
+## Day23 - Bar Charts in Matplotlib
 
+#  Matplotlib Bar Charts
+
+Bar charts are used to **compare quantities** across categories. They are easy to read and powerful for visual analysis.
+
+We’ll use **Sachin Tendulkar’s yearly run data**, then learn how to create grouped bar charts and horizontal bar charts with examples.
+
+---
+
+## Sachin’s Yearly Runs – Vertical Bar Chart
+
+### The Data
+
+```python
+import matplotlib.pyplot as plt
+
+years = [1990, 1992, 1994, 1996, 1998, 2000, 2003, 2005, 2007, 2010]
+runs =  [500, 700, 1100, 1500, 1800, 1200, 1700, 1300, 900, 1500]
+```
+
+### Basic Bar Plot
+
+```python
+plt.bar(years, runs)
+plt.xlabel("Year")
+plt.ylabel("Runs Scored")
+plt.title("Sachin Tendulkar's Yearly Runs")
+plt.show()
+```
+
+---
+
+## Setting Bar Width & Side-by-Side Bar Charts
+
+Let’s compare **Sachin**, **Sehwag**, and **Kohli** side-by-side for the same years.
+
+```python
+import numpy as np
+
+sachin = [500, 700, 1100, 1500, 1800, 1200, 1700, 1300, 900, 1500]
+sehwag = [0, 200, 900, 1400, 1600, 1800, 1500, 1100, 800, 0]
+kohli  = [0, 0, 500, 800, 1100, 1300, 1500, 1800, 1900, 2100]
+
+x = np.arange(len(years))  # index positions
+width = 0.25
+```
+The value of width ranges from 0 to 1 (default 0.8); it can go above 1, but bars will start to overlap.
+### Plotting Side-by-Side Bars
+
+```python
+plt.bar(x - width, sachin, width=width, label="Sachin")
+plt.bar(x, sehwag, width=width, label="Sehwag")
+plt.bar(x + width, kohli, width=width, label="Kohli")
+
+plt.xlabel("Year")
+plt.ylabel("Runs")
+plt.title("Run Comparison")
+plt.xticks(x, years)  # Show actual year instead of 0,1,2,...
+plt.legend()
+plt.tight_layout()
+plt.show()
+```
+
+---
+
+## Why Use `xticks()`?
+
+By default, `plt.bar()` uses numeric x-values (0, 1, 2, ...).  
+We use `plt.xticks()` to set the correct category labels like years or names.
+
+---
+
+## Horizontal Bar Charts with `barh()`
+
+Let’s compare **total runs scored in the first 5 years** by different players.
+
+```python
+players = ["Sachin", "Sehwag", "Kohli", "Yuvraj"]
+runs_5yrs = [500+700+1100+1500+1800, 0+200+900+1400+1600, 0+0+500+800+1100, 300+600+800+1100+900]
+```
+
+### Plotting with `barh()`
+
+```python
+plt.barh(players, runs_5yrs, color="skyblue")
+plt.xlabel("Total Runs in First 5 Years")
+plt.title("First 5-Year Performance of Indian Batsmen")
+plt.tight_layout()
+plt.show()
+```
+
+### Why Switch `x` and `y`?
+
+- In `bar()` → `x = categories`, `y = values`
+- In `barh()` → `y = categories`, `x = values`
+
+> Horizontal bars help when category names are long or when you want to emphasize comparisons from left to right.
+
+---
+
+### Adding Value Labels with `plt.text()`
+
+You can use `plt.text()` to display values **on top of bars**, making your chart easier to read. It's especially useful in presentations and reports.
+
+```python
+import matplotlib.pyplot as plt
+
+players = ["Sachin", "Sehwag", "Kohli"]
+runs = [1500, 1200, 1800]
+
+plt.bar(players, runs, color="skyblue")
+
+# Add labels on top of bars
+for i in range(len(players)):
+    plt.text(i, runs[i] + 50, str(runs[i]), ha='center')
+
+plt.ylabel("Runs")
+plt.title("Runs Scored by Players")
+plt.tight_layout()
+plt.show()
+```
+
+**Tip**: Use `ha='center'` to center the text and add a small offset (`+50` here) to avoid overlap with the bar.
+
+---
+
+## Summary
+
+| Feature                  | Use                                                  |
+|--------------------------|-------------------------------------------------------|
+| `plt.bar()`              | Vertical bars for categorical comparison             |
+| `plt.barh()`             | Horizontal bars (great for long labels)              |
+| `width=`                 | Control thickness/spacing of bars                    |
+| `np.arange()`            | Helps to align multiple bars side by side            |
+| `plt.xticks()`           | Replaces index numbers with real labels              |
+| `plt.tight_layout()`     | Prevents labels from overlapping                     |
+
+---
+
+**Assignment:**  
+Create a side-by-side bar chart comparing runs of Sachin, Kohli, and Sehwag over 5 selected years.  
+Then create a horizontal bar chart showing total runs scored in their debut 5 years.
+
+ 
