@@ -1874,3 +1874,105 @@ Create a pie chart showing the market share of mobile OS (Android, iOS, others).
 
 ---
  
+ ## Day 25 - Stack Plots in Matplotlib
+
+ # Stack Plots in Matplotlib
+
+## Let's Start with a Pie Chart
+
+Before we understand what a stack plot is, let’s visualize some simple data  
+
+Imagine you surveyed how a group of students spends their after-school time:
+
+```python
+import matplotlib.pyplot as plt
+
+activities = ['Studying', 'Playing', 'Watching TV', 'Sleeping']
+time_spent = [3, 2, 2, 5]  # hours in a day
+
+colors = ['skyblue', 'lightgreen', 'gold', 'lightcoral']
+
+plt.figure(figsize=(6,6))
+plt.pie(time_spent, labels=activities, colors=colors, autopct='%1.1f%%', startangle=90)
+plt.title("After School Activities")
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.show()
+```
+
+### Interpretation:
+
+- **Studying**: 3 hours
+- **Playing**: 2 hours
+- **Watching TV**: 2 hours
+- **Sleeping**: 5 hours
+
+This pie chart shows how a single student spends time **in one day**.
+
+---
+
+## What is a Stack Plot?
+
+Now, let’s imagine you surveyed **multiple days**, and you want to track how the time spent on each activity changes over a week.
+
+A **Stack Plot** is a type of area chart that helps visualize **multiple quantities over time**, stacked on top of each other. It's especially useful to see **how individual parts contribute to a whole over time**.
+
+### Use Cases:
+- Time spent on different activities over days
+- Distribution of tasks by team members over a project timeline
+- Website traffic sources over a week
+
+---
+
+## Stack Plot Example
+
+```python
+import matplotlib.pyplot as plt
+
+days = [1, 2, 3, 4, 5, 6, 7]  # Days of the week
+studying = [3, 4, 3, 5, 4, 3, 4]
+playing = [2, 2, 1, 1, 2, 3, 2]
+watching_tv = [2, 1, 2, 2, 1, 1, 1]
+sleeping = [5, 5, 6, 5, 6, 5, 5]
+
+labels = ['Studying', 'Playing', 'Watching TV', 'Sleeping']
+colors = ['skyblue', 'lightgreen', 'gold', 'lightcoral']
+
+plt.figure(figsize=(10,6))
+plt.stackplot(days, studying, playing, watching_tv, sleeping,
+              labels=labels, colors=colors, alpha=0.8)
+
+plt.legend(loc='upper left')  # Location of the legend
+plt.title('Weekly Activity Tracker')
+plt.xlabel('Day')
+plt.ylabel('Hours')
+plt.grid(True)
+plt.show()
+```
+
+---
+
+## Key Parameters in `stackplot()`
+
+| Parameter | Description |
+|----------|-------------|
+| `x` | The x-axis data (like days) |
+| `*args` | Multiple y-values (like studying, playing, etc.) |
+| `labels` | Labels for the legend |
+| `colors` | List of colors for each stack |
+| `alpha` | Transparency level (0 to 1) |
+| `loc` (in `legend`) | Position of the legend (`'upper left'`, `'best'`, etc.) |
+
+---
+
+## Summary
+
+- Use **pie charts** for a snapshot in time.
+- Use **stack plots** to see how data changes over time while still showing parts of a whole.
+- Customize your plot using parameters like `colors`, `labels`, `alpha`, and `legend`.
+
+Stack plots are a great way to **tell a story over time**.
+
+## Quick quiz
+Try making a stackplot with your own weekly schedule!
+
+ 
