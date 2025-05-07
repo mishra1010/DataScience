@@ -1975,4 +1975,102 @@ Stack plots are a great way to **tell a story over time**.
 ## Quick quiz
 Try making a stackplot with your own weekly schedule!
 
+ ## Day 26 - Histograms in Matplotlib
+
+ # Histograms in Matplotlib
+
+A **histogram** is a type of plot that shows the distribution of a dataset. It’s especially useful for visualizing the **frequency of numerical data** within specified ranges (called *bins*).
+
+---
+
+## Why and When to Use Histograms?
+
+Use histograms when:
+- You want to **understand the distribution** of a numerical dataset (e.g. age, salary, views).
+- You want to **detect skewness**, outliers, or **understand spread**.
+- You’re **binning continuous data** into intervals.
+
+Examples include:
+- Analyzing the age of your YouTube viewers
+- Understanding test scores distribution
+- Checking if data is normally distributed
+
+---
+
+## Understanding the `bins` Argument
+
+The `bins` argument controls how the data is grouped:
+- If an **integer**, it defines the number of equal-width bins.
+- If a **list**, it defines custom bin **edges**, allowing you to control the range and width of each bin.
+
+```python
+plt.hist(data, bins=10)  # 10 equal-width bins
+plt.hist(data, bins=[10, 20, 30, 40, 60, 100])  # Custom age bins
+```
+
+---
+
+## `edgecolor` for Better Visibility
+
+The `edgecolor` parameter adds borders to the bars, improving clarity:
+
+```python
+plt.hist(data, bins=10, edgecolor='black')
+```
+
+---
+
+## Example: Age Distribution of YouTube Viewers
+
+Here is age data for some viewers:
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+ages = [
+    34, 28, 36, 45, 27, 27, 45, 37, 25, 35,
+    25, 25, 32, 10, 12, 24, 19, 33, 20, 15,
+    44, 27, 30, 15, 24, 31, 18, 33, 23, 27,
+    23, 48, 29, 19, 38, 17, 32, 10, 16, 31,
+    37, 31, 28, 26, 15, 22, 25, 40, 33, 12,
+    33, 26, 23, 36, 40, 39, 21, 26, 33, 39,
+    25, 28, 18, 18, 38, 43, 29, 40, 33, 23,
+    33, 45, 29, 45, 3, 38, 30, 27, 30, 10,
+    27, 33, 44, 24, 21, 24, 39, 33, 24, 35,
+    30, 39, 22, 26, 26, 15, 32, 32, 30, 27
+]
+
+bins = [10, 20, 30, 40, 50, 60, 70]
+
+plt.hist(ages, bins=bins, edgecolor='black')
+plt.title('Age Distribution of YouTube Viewers')
+plt.xlabel('Age Group')
+plt.ylabel('Number of Viewers')
+plt.grid(True, linestyle='--', alpha=0.5)
+plt.show()
+```
+
+---
+
+## Adding a Vertical Line: `axvline`
+
+Use `axvline` to mark a specific value like the **average age** or a **threshold**.
+
+```python
+plt.hist(ages, bins=bins, edgecolor='black')
+plt.axvline(np.mean(ages), color='red', linestyle='--', linewidth=2, label='Average Age')
+plt.legend()
+plt.title('Age Distribution with Mean Line')
+plt.show()
+```
+---
+
+## Summary
+
+| Parameter | Purpose |
+|----------|---------|
+| `bins` | Number or custom edges of bins |
+| `edgecolor` | Color around each bar | 
+| `axvline` | Vertical reference line | 
  
