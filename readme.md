@@ -2185,4 +2185,183 @@ plt.show()
 
 > When comparing two datasets, use different colors and a legend for clarity.
 
+ ## Day 28 - Sub plots in Matplotlib
+
+ # Subplots in Matplotlib
+
+Subplots allow you to show **multiple plots in a single figure**, side-by-side or in a grid layout. This is helpful when comparing different datasets or aspects of the same data.
+
+---
+
+## 1. Basic Subplot (1 row, 2 columns)
+
+```python
+import matplotlib.pyplot as plt
+
+# Data
+x = [1, 2, 3, 4, 5]
+y1 = [i * 2 for i in x]
+y2 = [i ** 2 for i in x]
+
+# Create a figure with 1 row and 2 columns
+plt.subplot(1, 2, 1)  # (rows, cols, plot_no)
+plt.plot(x, y1)
+plt.title('Double of x')
+
+plt.subplot(1, 2, 2)
+plt.plot(x, y2)
+plt.title('Square of x')
+
+plt.tight_layout()
+plt.show()
+```
+
+> `plt.subplot(1, 2, 1)` means 1 row, 2 columns, and we're plotting in the 1st subplot.
+
+---
+
+## 2. 2×2 Grid of Subplots
+
+```python
+# More variations of x
+y3 = [i ** 0.5 for i in x]
+y4 = [10 - i for i in x]
+
+plt.figure(figsize=(8, 6))  # Optional: make it bigger
+
+plt.subplot(2, 2, 1)
+plt.plot(x, y1)
+plt.title('x * 2')
+
+plt.subplot(2, 2, 2)
+plt.plot(x, y2)
+plt.title('x squared')
+
+plt.subplot(2, 2, 3)
+plt.plot(x, y3)
+plt.title('sqrt(x)')
+
+plt.subplot(2, 2, 4)
+plt.plot(x, y4)
+plt.title('10 - x')
+
+plt.tight_layout()
+plt.show()
+```
+
+> This lays out 4 plots in a 2x2 grid. `plt.tight_layout()` avoids overlapping titles and labels.
+
+---
+
+## 3. Using `plt.subplots()` for Clean Code
+
+```python
+fig, axs = plt.subplots(1, 2, figsize=(10, 4))
+
+axs[0].plot(x, y1)
+axs[0].set_title('x * 2')
+
+axs[1].plot(x, y2)
+axs[1].set_title('x squared')
  
+fig.suptitle('Simple Comparison Plots', fontsize=14)
+fig.tight_layout()
+fig.subplots_adjust(top=0.85)  # So title doesn't overlap
+fig.savefig('my_plots.png')    # Save as image
+
+plt.show()
+```
+
+### So to summarize:
+
+- axs is for working on individual plots
+- fig is for settings that apply to the whole figure
+
+> `plt.subplots()` returns a figure and a list/array of axes objects. This is more flexible and cleaner, especially for loops or advanced customizations.
+
+---
+
+## 4. Looping Over Subplots
+
+```python
+fig, axs = plt.subplots(2, 2, figsize=(8, 6))
+ys = [y1, y2, y3, y4]
+titles = ['x * 2', 'x squared', 'sqrt(x)', '10 - x']
+
+for i in range(2):
+    for j in range(2):
+        idx = i * 2 + j
+        axs[i, j].plot(x, ys[idx])
+        axs[i, j].set_title(titles[idx])
+
+plt.tight_layout()
+plt.show()
+```
+
+> This approach works well when dealing with dynamic or repetitive data series.
+ 
+ ## Day 29 - Intro to Seaborn
+
+ # Introduction to Seaborn
+ 
+**Seaborn** is a Python library built on top of Matplotlib that makes it **easier** and **prettier** to create complex, beautiful visualizations.
+
+---
+
+## Why Seaborn?
+
+- Matplotlib is powerful but very **low-level**.
+- Seaborn adds **high-level** features like **automatic styling, themes, color palettes**, and **dataframe integration**.
+- Seaborn comes with built in Datasets
+- Makes complex plots (like **boxplots**, **violin plots**, **heatmaps**, **pairplots**) **very easy**.
+
+In short:  
+- Less code  
+- Better-looking graphs  
+- Easy handling of DataFrames (like from pandas)
+
+---
+
+## Basic Setup
+
+```python
+# Install Seaborn if you don't have it
+!pip install seaborn
+
+# Import Seaborn
+import seaborn as sns
+import matplotlib.pyplot as plt
+```
+
+---
+
+## Seaborn Themes
+
+Seaborn automatically makes your plots look good, but you can even control the overall "theme."
+
+```python
+sns.set_theme(style="darkgrid")  # Options: whitegrid, dark, white, ticks
+```
+
+Example:
+
+```python
+import numpy as np
+
+x = np.array([0, 2, 3, 4, 5, 6, 7, 8, 9 ,10, 60])
+y = np.sin(x)
+
+sns.lineplot(x=x, y=y)
+plt.title('Beautiful Line Plot')
+plt.show()
+```
+
+---
+
+## Summary 
+
+- Seaborn makes complex, attractive, and statistical plots simple and ready for professional reports.
+
+- Matplotlib is important to know for fine-tuning or customization, but Seaborn should be your first choice for day-to-day plotting.
+
+- In real-world Data Science projects, Seaborn saves hours of manual work by offering higher-level, smarter defaults.
