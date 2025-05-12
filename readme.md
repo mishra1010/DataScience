@@ -2365,3 +2365,146 @@ plt.show()
 - Matplotlib is important to know for fine-tuning or customization, but Seaborn should be your first choice for day-to-day plotting.
 
 - In real-world Data Science projects, Seaborn saves hours of manual work by offering higher-level, smarter defaults.
+
+## Day 30 - Seaborn plots
+
+# Basic Plot Types in Seaborn  
+
+- **Seaborn** comes with **built-in example datasets**.
+- These are small real-world datasets like restaurant tips, flight passenger counts, iris flower measurements, etc.
+- They are mainly used for **practice**, **examples**, and **learning** plotting techniques without needing to manually download any data.
+
+You can **load** these datasets directly into a **pandas DataFrame** using `sns.load_dataset()`.
+
+---
+
+## How to See All Available Datasets
+
+```python
+import seaborn as sns
+
+print(sns.get_dataset_names())
+```
+
+This will list dataset names like: `tips`, `flights`, `iris`, `diamonds`, `penguins`, `titanic`, etc.
+
+---
+
+## How to Load a Dataset
+
+```python
+tips = sns.load_dataset('tips')
+print(tips.head())
+```
+
+- This loads the **"tips"** dataset (restaurant bills and tips).
+- It returns a **pandas DataFrame** ready for analysis or plotting.
+
+---
+
+## Why Seaborn Provides Datasets
+
+- To **quickly test** different types of plots
+- To **learn plotting** without needing your own data at first
+- To create **examples** and **tutorials** easily
+- To show real-world messy data handling (missing values, categorical data, etc.)
+
+---
+Now lets look into some plots we can create usign Seaborn
+ 
+## 1. Line Plot
+
+```python
+tips = sns.load_dataset('tips')
+
+sns.lineplot(x="total_bill", y="tip", data=tips)
+plt.title('Line Plot Example')
+plt.show()
+```
+
+---
+
+## 2. Scatter Plot
+
+```python
+sns.scatterplot(x="total_bill", y="tip", data=tips, hue="time")
+plt.title('Scatter Plot with Color by Time')
+plt.show()
+```
+
+---
+
+## 3. Bar Plot
+
+```python
+sns.barplot(x="day", y="total_bill", data=tips)
+plt.title('Average Bill per Day')
+plt.show()
+```
+
+---
+
+## 4. Box Plot
+
+Boxplots show distributions, medians, and outliers in one simple plot.
+
+```python
+sns.boxplot(x="day", y="total_bill", data=tips)
+plt.title('Boxplot of Total Bill per Day')
+plt.show()
+```
+
+---
+
+## 5. Heatmap (Correlation Matrix)
+
+```python
+flights = sns.load_dataset('flights')
+pivot_table = flights.pivot("month", "year", "passengers")
+
+sns.heatmap(pivot_table, annot=True, fmt="d", cmap="YlGnBu")
+plt.title('Heatmap of Passengers')
+plt.show()
+```
+
+---
+
+## Working with Pandas DataFrames
+
+One of the biggest strengths of Seaborn:
+
+```python
+import pandas as pd
+
+df = pd.DataFrame({
+    "age": [22, 25, 47, 52, 46, 56, 55, 60, 34, 43],
+    "salary": [25000, 27000, 52000, 60000, 58000, 62000, 61000, 65000, 38000, 45000],
+    "gender": ["M", "F", "M", "F", "F", "M", "M", "F", "F", "M"]
+})
+
+sns.scatterplot(x="age", y="salary", hue="gender", data=df)
+plt.title('Salary vs Age Scatter Plot')
+plt.show()
+```
+
+---
+
+## Summary
+
+| Feature         | Matplotlib | Seaborn |
+|-----------------|------------|---------|
+| Default Styles  | Basic       | Beautiful |
+| Syntax Level    | Low         | High    |
+| Works with DataFrames | Manual | Easy   |
+| Plotting Complex Graphs | Tedious | Very Easy |
+
+---
+
+## Final Words
+
+- **Seaborn** makes data visualization **faster, prettier, and smarter**.
+- You should still know Matplotlib basics (for fine-tuning plots).
+- In real-world Data Science, we usually **start with Seaborn**, and **customize with Matplotlib**.
+
+---
+ 
