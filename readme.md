@@ -2508,3 +2508,15 @@ plt.show()
 
 ---
  
+ ## Day 31 - Data Collection Techniques
+
+check PPT
+
+## Day 32 - Introduction to web scraping
+
+Automated processto extract data from websites.
+Always check if apis are provided by websites, then do not do web scraping.
+
+HTML basics for web scraping
+
+div, p, h1, h2, a, img, table
