@@ -2520,3 +2520,22 @@ Always check if apis are provided by websites, then do not do web scraping.
 HTML basics for web scraping
 
 div, p, h1, h2, a, img, table
+
+
+## Day 33 - HTML for Webscraping
+
+HTML basics for web scraping
+
+div, p, h1, h2, a, img, table, imd
+
+id - uniquely identifiers
+class - property of an element
+multiple classes can be used in elements
+
+# Tools used for web scraping
+
+requests - to download content from webpage
+BeautifulSoup - to parse and extract data from HTML
+Selenium - For websites that load data dynamically with JavaScript
+
+Python provides powerful libraries to make web scraping easy.
