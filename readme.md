@@ -2539,3 +2539,86 @@ BeautifulSoup - to parse and extract data from HTML
 Selenium - For websites that load data dynamically with JavaScript
 
 Python provides powerful libraries to make web scraping easy.
+
+
+## Day 34 - requests module for Data Collection
+
+requests - python library for web scraping
+
+https://quotes.toscrape.com
+https://books.toscrape.com
+
+1. What is requests?
+requests is a Python library used to send HTTP requests easily.
+It allows you to fetch the content of a webpage programmatically.
+It is commonly used as the first step before parsing HTML with BeautifulSoup.
+2. Installing requests
+To install requests, run:
+
+pip install requests
+
+3. Sending a Basic GET Request
+Example
+import requests
+ 
+url = "https://example.com"
+response = requests.get(url)
+ 
+# Print the HTML content
+print(response.text)
+
+Key points:
+
+url: The website you want to fetch.
+response.text: The HTML content of the page as a string.
+4. Checking the Response Status
+Always check if the request was successful:
+
+print(response.status_code)
+
+Common Status Codes
+200: OK (Success)
+404: Not Found
+403: Forbidden
+500: Internal Server Error
+Good practice:
+
+if response.status_code == 200:
+    print("Page fetched successfully!")
+else:
+    print("Failed to fetch the page.")
+
+5. Important Response Properties
+Property	Description
+response.text	HTML content as Unicode text
+response.content	Raw bytes of the response
+response.status_code	HTTP status code
+response.headers	Metadata like content-type, server info
+6. Adding Headers to Mimic a Browser
+Sometimes websites block automated requests. Adding a User-Agent header helps the request look like it is coming from a real browser.
+
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+}
+ 
+response = requests.get(url, headers=headers)
+
+7. Handling Connection Errors
+Wrap your request in a try-except block to handle errors gracefully:
+
+try:
+    response = requests.get(url, timeout=5)
+    response.raise_for_status()  # Raises an HTTPError for bad responses
+    print(response.text)
+except requests.exceptions.RequestException as e:
+    print(f"An error occurred: {e}")
+
+8. Best Practices for Fetching Pages
+Always check the HTTP status code.
+Use proper headers to mimic a browser.
+Set a timeout to avoid hanging indefinitely.
+Respect the website by not making too many rapid requests.
+9. Summary
+requests makes it simple to fetch web pages using Python.
+It is the starting point for most web scraping workflows.
+Combining requests with BeautifulSoup allows for powerful data extraction.
