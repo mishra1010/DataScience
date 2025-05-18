@@ -2622,3 +2622,176 @@ Respect the website by not making too many rapid requests.
 requests makes it simple to fetch web pages using Python.
 It is the starting point for most web scraping workflows.
 Combining requests with BeautifulSoup allows for powerful data extraction.
+
+## Day 34 Using Beautiful Soup for Data Collection
+
+Helps to parse files to collect data
+
+Using Beautiful Soup for Data Collection
+1. What is BeautifulSoup?
+BeautifulSoup is a Python library used to parse HTML and XML documents.
+It creates a parse tree from page content, making it easy to extract data.
+It is often used with requests to scrape websites.
+2. Installing BeautifulSoup
+Install both beautifulsoup4 and a parser like lxml:
+
+pip install beautifulsoup4 lxml
+
+3. Creating a BeautifulSoup Object
+Example
+from bs4 import BeautifulSoup
+import requests
+ 
+url = "https://example.com"
+response = requests.get(url)
+ 
+soup = BeautifulSoup(response.text, "lxml")
+
+response.text: HTML content.
+"lxml": A fast and powerful parser (you can also use "html.parser").
+4. Understanding the HTML Structure
+BeautifulSoup treats the page like a tree.
+You can search and navigate through tags, classes, ids, and attributes.
+
+Example HTML:
+
+<html>
+  <body>
+    <h1>Title</h1>
+    <p class="description">This is a paragraph.</p>
+    <a href="/page">Read more</a>
+  </body>
+</html>
+
+5. Common Methods in BeautifulSoup
+5.1 Accessing Elements
+Access the first occurrence of a tag:
+soup.h1
+
+Get the text inside a tag:
+soup.h1.text
+
+5.2 find() Method
+Finds the first matching element:
+soup.find("p")
+
+Find a tag with specific attributes:
+soup.find("p", class_="description")
+
+5.3 find_all() Method
+Finds all matching elements:
+soup.find_all("a")
+
+5.4 Using select() and select_one()
+Select elements using CSS selectors.
+soup.select_one("p.description")
+
+soup.select("a")
+
+6. Extracting Attributes
+Get the value of an attribute, such as href from an <a> tag:
+
+link = soup.find("a")
+print(link["href"])
+
+Or using .get():
+
+print(link.get("href"))
+
+7. Traversing the Tree
+Access parent elements:
+soup.p.parent
+
+Access children elements:
+list(soup.body.children)
+
+Find the next sibling:
+soup.h1.find_next_sibling()
+
+8. Handling Missing Elements Safely
+Always check if an element exists before accessing it:
+
+title_tag = soup.find("h1")
+if title_tag:
+    print(title_tag.text)
+else:
+    print("Title not found")
+
+9. Summary
+BeautifulSoup helps parse and navigate HTML easily.
+Use .find(), .find_all(), .select(), and .select_one() to locate data.
+Always inspect the website's structure before writing scraping logic.
+Combine BeautifulSoup with requests for full scraping workflows.
+
+## Day 35 - Intro to Databases
+Introduction to Databases
+What is a Database?
+A Database is an organized collection of structured information or data, typically stored electronically in a computer system. Its a way to store data in a format that is easily accessible
+
+Example: Think of a library where books are organized by topic, author, and title – that's essentially what a database does with data.
+
+Why Do We Need Databases?
+To store, manage, and retrieve large amounts of data efficiently.
+To prevent data duplication and maintain data integrity.
+To allow multiple users to access and manipulate data simultaneously.
+What is SQL?
+SQL (Structured Query Language) is the standard programming language used to communicate with and manipulate databases.
+
+Common operations using SQL:
+
+INSERT – Add new records (CREATE)
+
+SELECT – Retrieve data (READ)
+
+UPDATE – Modify existing data (UPDATE)
+
+DELETE – Remove records (DELETE)
+
+These operations are usually referred to as CRUD Operations. CRUD stands for Create, Read, Update, and Delete — the four basic operations used to manage data in a database.
+
+Comparison with Excel
+Databases and Excel may seem similar at first, but they work differently under the hood.
+
+In Excel, a sheet is like a table in a database.
+Each row in the sheet is similar to a record (or entry) in a database table.
+Each column in Excel corresponds to a field (or attribute) in a table.
+Excel stores all data in one file, whereas a database can contain multiple related tables.
+In databases, you can define strict data types and rules, which Excel doesn't enforce.
+Unlike Excel, databases allow complex querying, relationships between tables, and secure multi-user access.
+Think of a database as a more powerful, structured, and scalable version of Excel for data management.
+
+Relational vs Non-relational Databases
+Relational databases store data in structured tables with predefined schemas and relationships between tables (e.g., MySQL, PostgreSQL). Non-relational databases (NoSQL) use flexible formats like documents, key-value pairs, or graphs, and don’t require a fixed schema (e.g., MongoDB, Firebase). Relational is ideal for structured data and complex queries, while non-relational is better for scalability and unstructured data.
+
+Feature	Relational (SQL)	Non-relational (NoSQL)
+Structure	Tables (rows & cols)	Documents, Key-Value
+Language	SQL	Varies (Mongo Query, etc.)
+Schema	Fixed schema	Flexible schema
+Examples	MySQL, PostgreSQL	MongoDB, Firebase
+What is DBMS?
+A Database Management System (DBMS) is software that interacts with users, applications, and the database itself to capture and analyze data. It allows users to create, read, update, and delete data in a structured way.
+
+Examples: MySQL, PostgreSQL, Oracle Database, SQLite.
+Functions: Data storage, retrieval, security, backup, and recovery.
+What is MySQL?
+MySQL is an open-source relational database management system (RDBMS) that uses SQL.
+
+Widely used in web development
+High performance and reliability
+Powers platforms like WordPress, Facebook (early days), and YouTube
+Real-World Use Cases
+E-commerce websites to store customer orders and product listings
+Banking systems to handle transactions securely
+Social networks to manage user data, messages, and posts
+Summary
+Databases are essential for structured data storage and retrieval.
+
+SQL is the language used to interact with relational databases.
+
+MySQL is a popular and powerful SQL-based database system.
+
+Understanding databases is a must-have skill for any developer or data analyst.
+
+## Day 36 - Install My SQL
+
+MySQL install steps
