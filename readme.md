@@ -2795,3 +2795,8 @@ Understanding databases is a must-have skill for any developer or data analyst.
 ## Day 36 - Install My SQL
 
 MySQL install steps
+
+## Day 37 - Create a Database
+
+create database Deepak
+show databases;
