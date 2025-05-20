@@ -2800,3 +2800,30 @@ MySQL install steps
 
 create database Deepak
 show databases;
+
+## Day 38 - Create a Table
+
+CREATE TABLE students(
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(100) NOT NULL DEFAULT 'No Name',
+age INT,
+email VARCHAR(100) UNIQUE,
+admission_date DATE
+);
+
+select * from students;
+shows date in table
+id, name, age, email, admission_date
+
+Data Types
+INT, VARCHAR(n), TEXT, DATE, DATETIME, BOOLEAN
+
+Constraints
+Primary Key, Not Null, Default, Unique, Auto_Increment, Foreign KEY
+
+DESCRIBE students
+id	int	NO	PRI		auto_increment
+name	varchar(100)	NO		No Name	
+age	int	YES			
+email	varchar(100)	YES	UNI		
+admission_date	date	YES			
