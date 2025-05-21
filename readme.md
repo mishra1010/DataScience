@@ -2827,3 +2827,45 @@ name	varchar(100)	NO		No Name
 age	int	YES			
 email	varchar(100)	YES	UNI		
 admission_date	date	YES			
+
+## Day 39 - Modify a Table
+
+RENAME TABLE students to cwh_students;
+
+show tables;
+DROP table cwh_students;
+
+Alter table cwh_students RENAME COLUMN admission_date TO adm_dt;
+
+ALTER TABLE cwh_students DROP COLUMN adm_dt;
+ALTER TABLE cwh_students ADD COLUMN is_passed BOOL default True;
+Alter table cwh_students MODIFY COLUMN name varchar(50) default("");
+Alter table cwh_students MODIFY COLUMN name varchar(50) AFTER is_passed;
+
+Most of the above are generally not done and mostly we fetch data from tables
+
+## Day 40 - Inserting Data into a Table
+
+-- CREATE DATABASE schooldb;
+-- USE schooldb;
+
+CREATE TABLE student(
+id INT PRIMARY KEY,
+name VARCHAR(100),
+age INT,
+grade VARCHAR(10),
+dob DATE 
+);
+
+
+INSERT INTO student (id,name,age,grade,dob)
+VALUES(2, "XYZ", 38, "10th", "1999-02-13");
+
+select * from student;
+
+Insert multiple values
+INSERT into student (id,name,age,grade,dob) values
+(12, "XYZ", 38, "10th", "1999-02-13"),
+(22, "XYZ", 38, "10th", "1999-02-13"),
+(32, "XYZ", 38, "10th", "1999-02-13"),
+(42, "XYZ", 38, "10th", "1999-02-13");
