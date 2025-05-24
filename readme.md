@@ -2869,3 +2869,43 @@ INSERT into student (id,name,age,grade,dob) values
 (22, "XYZ", 38, "10th", "1999-02-13"),
 (32, "XYZ", 38, "10th", "1999-02-13"),
 (42, "XYZ", 38, "10th", "1999-02-13");
+
+## Day 41 - Selecting Data from a Table
+
+SELECT * FROM student;
+SELECT name, grade FROM student;
+SELECT * FROM student WHERE age > 16;
+
+SELECT * FROM student WHERE name LIKE '%z'
+SELECT * FROM student WHERE name LIKE 'A%'
+
+NULL means missing value
+
+SELECT * FROM student WHERE name = NULL ----- does not work
+SELECT * FROM student WHERE name IS NOT NULL
+
+Combine conditions
+SELECT * from student where grade = '9th' OR grade = '12th'
+
+SELECT * from student where (grade = '10th' or grade = '11th') and age > 16
+
+Sorting
+SELECT * FROM student order by age DESC ----- Use ASC for ascending
+
+
+## Day 42 - Updating Data in a Table
+UPDATE student SET grade = '11th' where id=1;
+
+UPDATE student SET grade = '11th' where id=1;
+UPDATE student SET name = 'Deepak' where id=1;
+UPDATE student SET age = 39 where id=1;
+
+UPDATE student SET age = age + 2 where age=38;
+
+## Day 43 - Deleting data from table
+
+DELETE FROM student where id = 32
+
+DELETE FROM student ---- deletes all items in table
+
+DROP table student; ----- deletes table
