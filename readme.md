@@ -2909,3 +2909,47 @@ DELETE FROM student where id = 32
 DELETE FROM student ---- deletes all items in table
 
 DROP table student; ----- deletes table
+
+## Day 44 - transactions
+
+There are ccases where if we put a wrong condition for delete, then all our data can be deleted. So, in these scenarios 
+Auto Commit - By default
+Commit 
+Rollback
+
+So, we will use a transaction with a group of queries or sql statements
+Transaction are atomic, consistent. isolated and Durable (ACID)
+
+select @@autocommit -- checks if its enabled 
+SET autocommit = 0 to disable
+
+Then we need to do the following
+select @@autocommit;
+SET autocommit = 0;
+select * from student;
+START TRANSACTION;
+UPDATE student set age = age+1 where id =2
+COMMIT;
+
+INSERT into student (id,name,age,grade,dob) values
+(52, "Shyam", 25, "12th", "1995-02-13");
+
+START TRANSACTION;
+UPDATE student set age = age+1 where id =2
+ROLLBACK;
+
+
+use transactions if we want to delete or update any important data, need to be very careful with this.
+
+## Day 45 - Getting current Date and Time
+
+select current_date;
+select current_time;
+select now();
+select current_timestamp()
+
+ALTER TABLE student ADD COLUMN date_joined DATETIME DEFAULT (NOW())
+
+INSERT into student (id,name,age,grade,dob) values
+(52, "Shyam", 25, "12th", "1995-02-13");
+
