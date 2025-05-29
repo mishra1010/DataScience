@@ -2953,3 +2953,54 @@ ALTER TABLE student ADD COLUMN date_joined DATETIME DEFAULT (NOW())
 INSERT into student (id,name,age,grade,dob) values
 (52, "Shyam", 25, "12th", "1995-02-13");
 
+## Day 46 - Constraints
+
+Rules applied to table columns to enforce data integrity
+
+1. NOT NULL
+2. UNIQUE
+3. DEFAULT
+4. CHECK
+5. NAMED Constraints
+
+## Day 47 - Foreign keys
+
+CREATE database school;
+USE school;
+CREATE TABLE classes(
+class_id INT AUTO_INCREMENT PRIMARY KEY,
+class_name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE students(
+student_id INT AUTO_INCREMENT PRIMARY KEY,
+student_name VARCHAR(100) NOT NULL,
+class_id INT,
+FOREIGN KEY (class_id)  REFERENCES classes(class_id)
+ON UPDATE CASCADE
+ON DELETE SET NULL
+);
+
+Insert into classes (class_name) values('Mathematics'),('Science'),('History');
+Insert into students (student_name, class_id) values
+('Alice', 1), ('Bob', 2), ('Charlie', 1);
+
+View relationship between tables
+show create table students;
+
+output
+students	CREATE TABLE `students` (
+   `student_id` int NOT NULL AUTO_INCREMENT,
+   `student_name` varchar(100) NOT NULL,
+   `class_id` int DEFAULT NULL,
+   PRIMARY KEY (`student_id`),
+   KEY `class_id` (`class_id`),
+   CONSTRAINT `students_ibfk_1` FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`) ON DELETE SET NULL ON UPDATE CASCADE
+ ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+ ## Day 48 - Joins in MySQL
+
+ Inner (intersection)
+ Left (Whole left table)
+ right (Whole right table)
+ Cross (Both left and right table)
