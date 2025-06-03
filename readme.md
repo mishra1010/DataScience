@@ -3004,3 +3004,91 @@ students	CREATE TABLE `students` (
  Left (Whole left table)
  right (Whole right table)
  Cross (Both left and right table)
+
+ ## Day 49 - Union in MySQL
+
+
+CREATE TABLE marks(
+id INT AUTO_INCREMENT PRIMARY KEY,
+subject VARCHAR(100) NOT NULL,
+student_id INT,
+FOREIGN KEY (student_id)  REFERENCES students(student_id)
+ON UPDATE CASCADE
+ON DELETE SET NULL,
+score INT
+);
+
+Insert into marks (subject, score) values
+('Math',92),('English',95),('Science',94), ('Math',82),('English',99),('Science',99);
+
+select student_id from students
+union
+select student_id from marks;
+
+Union removes duplicates
+Union all shows duplicates
+
+## Day 49 - Functions in MySQL
+
+select CONCAT(student_name, ' ', class_id) as student_details from students;
+
+# student_details
+'Alice 1'
+'Bob 2'
+'Charlie 1'
+
+select length(student_name) as len from students;
+
+# len
+'5'
+'3'
+'7'
+
+select ROUND(DATEDIFF(NOW(), hire_date)/365, 0) as years from employees -- 0 is for decimal place
+
+## Day 50 - views
+
+Virtual table
+
+select name, age, grade, ROUND(DATEDIFF(NOW(), date_joined)/365, 0) as years from student
+
+save this query as a virtual table and perform operations like select operation. View can be updated with new column. stores references and not real data.
+
+create or replace view deep as select name, age, grade, ROUND(DATEDIFF(NOW(), date_joined)/365, 0) as years from student;
+
+select * from deep;
+
+## Day 51 - indexes
+
+Data structure which helps data retrieval faster
+
+Create index in a table column so that retrieval of data is faster
+
+read operations are faster but write is slow
+
+
+create index idx_name_city on users(name, city)
+
+
+drop index idx on employees
+show index from employees
+
+## Day 52 - Subqueries
+
+Query inside another query
+
+select * from employees
+
+select first_name, last_name from employees
+where salary > (select avg(salary) from employees)
+
+select first_name, last_name from employees e
+where salary >(
+    select avg(salary) from employees where department=e.department
+)
+
+select * from employees -- check the exact salary based on department to get a sense of what/why we got the output in the above step
+
+
+
+
