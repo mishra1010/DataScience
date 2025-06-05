@@ -3090,5 +3090,54 @@ where salary >(
 select * from employees -- check the exact salary based on department to get a sense of what/why we got the output in the above step
 
 
+## Day 53 - Group By
+
+select * from student;
+
+select grade, count(*) as total from student group by grade;
+
+# grade, total
+'10th', '4'
+'11th', '1'
+NULL, '1'
+'12th', '1'
+
+group by also works with rollup
+
+## Day 54 - Stored Procedures, Delimiter
+
+select * from employees;
+select first_name from employees;
+
+; is the demiliter and for procedure, we need to change Delimiter
+
+delimiter //
+
+create procedure list_employees()
+
+begin
+select * from employees;
+select first_name from employees;
+end//
+
+delimiter;
+
+call list_employees()
+
+How to give argument in SP?
+
+create procedure get_emp_by_id(IN emp_id INT)
+
+begin
+select * from employees where employee_id = emp_id;
+select first_name from employees;
+end//
+
+delimiter;
+
+call get_emp_by_id(3)
+
+DROP PROCEDURE IF EXISTS get_emp_by_id;
+
 
 
