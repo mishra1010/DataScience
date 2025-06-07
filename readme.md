@@ -3140,4 +3140,52 @@ call get_emp_by_id(3)
 DROP PROCEDURE IF EXISTS get_emp_by_id;
 
 
+## Day 55 - Intro to Probability
 
+Probability means Chance
+
+Used for modeling Uncertainity
+
+Probability of tossing a fair coin = Favourable outcome/Possible outcome
+
+Experimental outcome = Data is used to calculate
+
+Theoritical probability = Based on known possible outcomes Ex - Probability of getting heads in a fair coin = 0.5
+
+Event.
+SampleSpace
+
+## Day 56 - Types of Experiments in Probability
+
+1. Deterministic
+2. Probabilistic or random
+
+
+## Day 57 - Probability practice set 1
+
+1. you roll a far six-sided die. What is the probability of getting and even number?
+
+f(o)/p(o) = 3/6 = 1/2 = 0.5
+
+2. 2 coins are tossed. Find the sample space associated with this random Experimental
+
+4 = 2 ^n
+
+3. Two six sided dice are rolled. Find probability that the sum is 7
+
+No. of cases = 6^n = 36
+(1,6)(2,5)(3,4)(4,3)(5,2)(6,1)
+
+P = 6/36 = 1/6
+
+4. A bag contains 3 red, 2 blue and 5 green balls. Find P(red), P(blue), P(green)
+
+P(red) = 3/3+2+5 = 3/10
+P(blue) = 2/10
+P(green) = 5/10
+
+5. A card is drawn at random from a deck of 52 cards. Find the probability of 1. getting a heart 2. getting a face card
+
+1. P(heart) = 13/52
+
+2. P(face card) = 4*3/52 = 12/52
