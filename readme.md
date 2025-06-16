@@ -3189,3 +3189,63 @@ P(green) = 5/10
 1. P(heart) = 13/52
 
 2. P(face card) = 4*3/52 = 12/52
+
+## Day 58 - Basic rules of probability
+
+Experiment
+outcome
+Probability
+P(AUB)
+P(A intrersection (and) B)
+Sample space - All outcomes in an experiment
+Event - subset of sample space
+Mutually Exclusive Events
+Independent Events
+Certain Event
+Impossible Event
+Exhaustive Event - Tossing a die - sample space = {1,2,3,4,5,6} Event (Even) = {2,4,6}
+
+2. The complement rule
+
+P(A complement) = 1 - P(A)
+
+3. Addition Rules
+
+P(A or B) = P(A) + P(B) - P(A and B)
+
+for mutually exclusive Events
+
+P(A or B) = P(A) + P(B)
+
+4. Multiplication rule
+
+P(A and B) = P(A) * P(B) - For independent Events
+
+For Dependent events - P(A and B) = P(A)*P(B|A) -> Probability of B given A has occurred
+
+
+5. Independent vs Dependent Events
+
+6. Mutually Exclusive Events
+
+
+## Day 59 - Practice questions on probability
+
+
+## Day 60 - Conditional Probability
+
+P(B/A) = Probability of B given A has already occurred
+
+P(A/B) = P(A intersection B)/P(B)
+
+Law of Total Probability - B1, B2 - mutually exclusive and Exhaustive
+
+P(A) = PB1 * PA/B1 + PB2 * PA/B2 + ...
+
+Law of Total Probability comes from law of multiplication and Addition
+
+
+
+## Day 61 - Baye's Theorem
+
+P(A/B) = (PB/A * PA)/PB
