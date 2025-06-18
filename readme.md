@@ -3249,3 +3249,55 @@ Law of Total Probability comes from law of multiplication and Addition
 ## Day 61 - Baye's Theorem
 
 P(A/B) = (PB/A * PA)/PB
+
+## Day 62 - Probability distributions
+
+Finding pattern in data
+There is a pattern to how data is spread
+
+1. Discrete Probability Distribution - Finite outcomes Ex - Binomial Distribution
+
+2. Continuous Probability Distribution - Infinite values Ex - Normal Distribution
+
+## Day 63 - Uniform Distribution
+
+Every outcome is equally likely
+
+
+Ex - rolling a die (discrete uniform)
+outcomes {1,2,3,4,5,6}
+P1 = 1/6, P2=1/6....
+
+Probability Mass Function
+
+Continuous version
+
+Probability Density Functiuon
+
+
+## Day 64 - Binomial Distribution
+
+Discrete distribution
+
+Probability Mass Function
+
+## Day 65 - Normal Distribution
+
+Most widely used
+
+Mean
+
+Standard Deviation
+
+Its a continuous probability distribution and hence PDF needs to be calculated
+
+68-95-99.7
+
+## Day 66 - Central Limit Theorem
+
+Heart of Statistics
+
+
+Mean
+Standard Deviation
+
