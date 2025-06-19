@@ -3301,3 +3301,39 @@ Heart of Statistics
 Mean
 Standard Deviation
 
+## Day 67 - Machine learning
+
+Subset of AI
+Helps in creating systems which can learn from data without explicit programming and improve over a period of time
+
+Email -> ML System -> Spam/Heatmap
+
+ML Algos -> Supervised, Unsupervised, Reinforcement learning
+
+Libraries - Scikit-Learn, TensorFlow, Keras, PyTorch, Pandas/NumPy
+
+## Day 68 - How Machines Learn
+
+Machines learn from data and improves over a period of time
+
+Ex - spam or not spam email
+
+imp models
+
+Neural networks
+
+Random Forest
+
+Decision Trees
+
+Support Vector Machines
+
+Naive Bayes
+
+
+
+## Day 69 - Installing Scikit-Learn
+
+pip install scikit-learn
+
+classification, Regression, Clustering, Dimensionality Reduction etc. 
