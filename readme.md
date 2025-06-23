@@ -3361,3 +3361,26 @@ print(f"The fruit is {prediction[0], prediction[1]}")
 # Output
 
 The fruit is ('orange', 'apple')
+
+## Day 71 - Using different ML Models
+
+How to club different ML models in the same pipeline
+
+Decision Tree plotting
+
+from sklearn.tree import plot_tree
+
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(11, 6))
+
+plot_tree(clf, feature_names=["weight", "color"], class_names=["apple", "orange"], filled=True)
+
+Output 
+
+Based on weight and labels the Decision tree is shown, refer the notebook
+
+Now, lets replace DecisionTree with RandomForest Classifier
+
+We can also use NaiveBayes classifier
+
