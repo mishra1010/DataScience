@@ -3384,3 +3384,74 @@ Now, lets replace DecisionTree with RandomForest Classifier
 
 We can also use NaiveBayes classifier
 
+## Day 72 - History of Machine Learning
+
+1939/50 - Alan Turing - can Machines think? Did Turing test and wrote a paper
+
+1957 - Frank Roosevelt - made perceptron -> first algo which learns from data
+
+1980s - Comeback of ML - Perceptron, Artificial NN
+
+1986 - Researchers bring back NN, inspired by how brain works
+
+1997 - IBM's Deep Blue defeated Garry Kasparov, then ppl said how much can machine think and how long it can go?
+
+1998 - Amnesh Dataset, hand written data, compute and hardware were a limitation
+
+2006 - Deep learning saw handwriting and identified
+
+2017 - Transformer
+
+2018 - Google Bard
+
+2020 - GPT 3
+
+2022 - Chat GPT
+
+Supervised, Unsupervised and Reinforcement learning
+
+## Day 73 - Supervised Learning
+
+Going to school - Kids see photo and learn animals and everything around
+
+These are called labeled examples - then kids figure out what is what. - Supervised learning
+
+Example - Spam email identification
+
+Supervised Algos - 
+
+linear regression
+
+logistic regression
+
+Decision Trees
+
+Support Vector Machines
+
+Naive Bayes
+
+Random Forest
+
+# Regression vs Classifier
+
+When we want to predict a value, we do it using Regressor (value predictkarne wala) - Price of a house based on features and with 1000 records, we get house rates
+
+Identify Color and Identify label (cat or dog) - Classifier
+
+Example of supervised algo - Doctor predicts cancer from a number of Xrays
+
+User labels a product review: "This is positive"
+
+A bank labels a loan application: "This one defaulted"
+
+More labeled examples they see, the better they get.
+
+# If we do not have labels and just data, what happens?
+
+
+
+
+
+
+
+
