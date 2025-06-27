@@ -3448,6 +3448,88 @@ More labeled examples they see, the better they get.
 
 # If we do not have labels and just data, what happens?
 
+## Day 74 - Unsupervised Learning
+
+Data without any labels
+
+We have to recognize based on a pile of Data
+
+There is no supervision
+
+Ex- grouping photos of a unique person.
+
+Algos - K -Means Clustering, Hierarchical Clustering, Principal Component Analysis
+
+It's all about finding similar items
+
+Used when-
+
+1. We do not have labeled data
+
+2. We want to discover hidden patterns
+
+3. We want to explore before making decisions.
+
+## Day 75 - Reinforcement Learning
+
+Learning based on available environment. Like playing a game. Get a reward when things work fine.
+
+Humans are an example of reinforcement learning.
+
+Depends on which actions will fetch rewards
+
+Ex - Agent playing chess to identify strategies, reward is the score agent gets, env is chess
+
+Self-driving cars.
+
+Robotics.
+
+Finance.
+
+Games AIs.
+
+## Day 76 - Which ML Technique to Choose
+
+1. Recognizingthe animals
+
+you have 10,000 images of animals. Each one is labeled as cat or dog.
+
+2. Recognizing the Crowded
+
+you have customer data but no labels. you do not know who buys what or why. you just have behavior logs.
+
+3. The Game Players
+
+Reinforcement learning (Trial and Error)
+
+
+## Day 76 - Solving real world ML Problems
+
+Practical sklearn
+
+1. How will any work relatedto ML be used in your organization? Big Picture
+
+2. Get the data - raw data (pdf, word, excel etc.), extract features and labels,
+
+3. Explore and Visualize the data
+
+4. Prepare the Data - clean, transform and format the data. Handle missing values, normalize features, and split
+the data into training and testing sets.
+
+5. Select a model and train it
+
+6. Fine-tune your model
+
+7. Present your solution
+
+8. Launch, Monitor and Maintain
+
+
+## Day 77 - Datasets for ML
+
+openml.org has datasets
+
+uci ml repository - iris dataset
 
 
 
