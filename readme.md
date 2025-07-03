@@ -3596,6 +3596,28 @@ Questions
 
 ## Day 82 - Measuring Errors (RMSE & MAE)
 
+Models would always have some errors and would not be able to predict with 100% accuracy
+
+80% data - Training
+
+20% data - Testing - we get value from model and can compare with Actual value
+
+Testing helps us understand the error rates
+
+M - A = Deviation or Error
+
+Total Error = Summation(M-A) does not give proper data as errors might cancel out but that does not mean there is no error.
+
+To get the errors, we have 2 ways -
+
+1. RMSE (Root Mean Square Error) - get sq root, mean and square
+
+2. MAE (Mean Absolute Error) = mod makes all values positive and hence errors do not cancel out
+
+Ex - Actual value vector and predicted value vector - The difference gives error
+
+## Day 83 - Analyzing the Data (EDA)
+
 
 
 
