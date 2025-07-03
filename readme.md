@@ -3534,7 +3534,45 @@ uci ml repository - iris dataset
 
 ## Day 78 - Training ML Algo on iris dataset
 
+Usescikitlearn, import randomclassifier model
+
+from sklearn.ensemble import RandomForestClassifier
+
 Exercise done for training and test data in file quick_trainiris
+
+## Day 79 - Measuring Accuracy of Predictions
+
+It can be done using scikitlearn libraries.
+
+This can be checked for multiple algorithms
+
+from sklearn.ensemble import RandomForestClassifier
+
+from sklearn.tree import DecisionTreeClassifier
+
+from sklearn.naive_bayes import GaussianNB
+
+count = 0
+for i in range(0, len(actual)):
+    if actual[i] == predictions[i]:
+        count = count + 1
+print((count*100)/len(actual))
+
+file accuracypredictions
+
+## Day 80 - Predicting Gurgaon city house prices
+
+Features
+
+distance_airport, carpet_area, type, no_of malls, no_of_rooms
+
+Label - can be placed in any column in csv datasheet
+
+Price
+
+housing.csv file has details
+
+
 
 
 
