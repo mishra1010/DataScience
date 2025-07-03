@@ -3532,8 +3532,9 @@ openml.org has datasets
 uci ml repository - iris dataset
 
 
+## Day 78 - Training ML Algo on iris dataset
 
-
+Exercise done for training and test data in file quick_trainiris
 
 
 
