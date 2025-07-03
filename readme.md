@@ -3572,6 +3572,35 @@ Price
 
 housing.csv file has details
 
+## Day 81 - Steps for house prices problem
+
+1. Look at the bigger picture. If the price of the house we want to purchase makes any sense or not.
+
+2. Get the Data - write a program to automate this
+
+3. Explore and visualize the data
+
+4. Prepare the data
+
+5. select a model and train it
+
+6. Fine tune your model
+
+7. Present and Launch your model
+
+Questions
+
+1. Supervised, unsupervised or reinforcement - Supervised (features are given, we need to predict labels)
+
+2. Classification or Regression - Regression (as we have 1 variable to predict based on the features)
+
+## Day 82 - Measuring Errors (RMSE & MAE)
+
+
+
+
+
+
 
 
 
