@@ -3696,10 +3696,41 @@ import matplotlib.pyplot as plt
 
 df.hist(bins=50, figsize=(12,8))
 
+## Day 84 - Creating a Test set
+
+Make a different data test set. Do not see the data. if we see it, we might assume whether data is linear and can do overfitting which might not be a real 
+fit for many scenarios and model will not perform well. So its better to not see some test data during EDA
+
+Data Snooping Bias - if test set is leaked and we become biased and take decisions on algorithms
+
+# Method to split data
+
+import numpy as np # move test set to a separate file
+
+def shuffle_and_split(data, test_ratio):
+    shuffled_indices = np.random.permutation(len(data)) # returns shuffled indices
+    print(shuffled_indices)
+
+#Example for shuffle indices
+data = [1,2,3,5,76,32,8,25]
+
+shuffle_and_split(data, .4)
+[6 2 7 1 4 5 0 3]
 
 
 
+full code
 
+def shuffle_and_splits(data, test_ratio):
+    np.random.seed(42) # Set the seed for reproducibility, if we change seed then numbers will change
+    shuffled_indices = np.random.permutation(len(data)) # returns shuffled indices, always gives random indices whichis an issue. for this we use seed above to get same training data
+    test_set_size = int(len(data) * test_ratio)
+    test_indices = shuffled_indices[:test_set_size]
+    train_indices = shuffled_indices[test_set_size:]
+    return data.iloc[train_indices], data.iloc[test_indices]
+
+
+We will understand the issue of generating test set as above in next lesson
 
 
 
