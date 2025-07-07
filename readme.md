@@ -3734,6 +3734,43 @@ We will understand the issue of generating test set as above in next lesson
 
 
 
+## Day 85 - Stratified Shuffle split
+
+We split 20% data for test in last test data creation and for ex - there might not be data available in ocean_proximity field. if training set does not have any
+ of the options available in ocean_proximity, our algo will not be able to learn. 
+
+To ensure that important characteristics of the population are well represented in both the training and test sets, we use stratified sampling.
+
+Strata - subgroup of data defined by a specific attribute.
+
+In housing data - median income is a strong predictor of house prices. So, we want to ensure that all groups of median_income come in training and testing.
+
+
+df['income_cat'] = pd.cut(df['median_income'], bins=[0, 1.5, 3.0, 4.5, 6.0, np.inf], labels=[1,2,3,4,5])
+
+Gets a new column with bin width and labels for them
+
+df.head()
+
+	longitude	latitude	housing_median_age	total_rooms	total_bedrooms	population	households	median_income	median_house_value	ocean_proximity	income_cat
+0	-122.23	37.88	41.0	880.0	129.0	322.0	126.0	8.3252	452600.0	NEAR BAY	5
+1	-122.22	37.86	21.0	7099.0	1106.0	2401.0	1138.0	8.3014	358500.0	NEAR BAY	5
+2	-122.24	37.85	52.0	1467.0	190.0	496.0	177.0	7.2574	352100.0	NEAR BAY	5
+3	-122.25	37.85	52.0	1274.0	235.0	558.0	219.0	5.6431	341300.0	NEAR BAY	4
+4	-122.25	37.85	52.0	1627.0	280.0	565.0	259.0	3.8462	342200.0	NEAR BAY	3
+
+Now, lets plot using matplot lib for income categories
+
+# Plot Income_category
+import matplotlib.pyplot as plt
+df['income_cat'].value_counts().sort_index().plot.bar(rot=0, grid=True)
+plt.title("Income Categories Distribution")
+plt.xlabel("Income Category")
+plt.ylabel("Number of Instances")
+
+if we use stratifies shuffle split, then it would ensure that the training and test sets are representative of "income_cat" column
+
+We will do a stratified shuffle split now - All it does is make training and testing data representative of the population
 
 
 
