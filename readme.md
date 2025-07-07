@@ -3772,5 +3772,27 @@ if we use stratifies shuffle split, then it would ensure that the training and t
 
 We will do a stratified shuffle split now - All it does is make training and testing data representative of the population
 
+## Day 86 - Visualizing the Data
+
+Till now, we have not see data closely, we will not see it and then check after preprocessing how does our data look
+
+Any changes to data needs to be done in training data and not with test data.
+
+Corelation coefficient
+
+We take attributes which are not directly corelated, so use pearson coefficient Corelation
+
+we plot scatter matrix chart to see the corelation among attributes
+
+
+from pandas.plotting import scatter_matrix
+attributes = ["housing_median_age", "median_income", "median_house_value"]
+scatter_matrix(df[attributes],figsize=(12,8))
+
+## Day 87 - Further preprocessing and Handling Missing Data
+
+
+
+
 
 
