@@ -3780,9 +3780,9 @@ Any changes to data needs to be done in training data and not with test data.
 
 Corelation coefficient
 
-We take attributes which are not directly corelated, so use pearson coefficient Corelation
+We take attributes which are not directly corelated, so use pearson coefficient Correlation
 
-we plot scatter matrix chart to see the corelation among attributes
+we plot scatter matrix chart to see the correlation among attributes
 
 
 from pandas.plotting import scatter_matrix
@@ -3790,6 +3790,31 @@ attributes = ["housing_median_age", "median_income", "median_house_value"]
 scatter_matrix(df[attributes],figsize=(12,8))
 
 ## Day 87 - Further preprocessing and Handling Missing Data
+
+# create a copy of training data to make changes to data and not impact trainingset
+df = strat_test_set.copy()
+
+Now we will do further preprocessing on the data
+
+1. Identify missing values (we will not remove values)
+
+2. Drop rows with missing data, Drop the entire column, impute missing values (handles consistent handling of data across all datasets (train, test, new data))
+
+from sklearn.impute import SimpleImputer
+
+imputer = SimpleImputer(strategy="median") - also have mean, most_frequent (can handle categorical data), Constraints
+
+imputer.fit(housing_num) # Next it can impute data
+
+imputer.statistics_ - artray contains medians
+
+x = imputer.transform(housing_num) # transforms housing data without any missing data and missing data is replaced by median
+
+Step 1 - Separate housing features and labels
+
+Step 2 - Impute missing values using scikit-learn as mentioned above
+
+Shows how we play with data, get the max essence of data and make it accurate to make our model more accurate.
 
 
 
