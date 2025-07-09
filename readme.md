@@ -3859,6 +3859,78 @@ housing_tr = pd.DataFrame(X, columns=housing_num.columns, index=housing_num.inde
 
 ## Day 89 - Handling categorical values
 
+ocean_proximity is a categorical attribute we have in housing data. We need to check how to handle this.
 
+We had removed categorical data earlier by using the following
 
+# Only get the numerical features from housing
+housing_num = housing.select_dtypes(include=[np.number])
 
+Now we will delete this and restore all columns and then find ways to convert categorical column to numerical
+
+set(housing['ocean_proximity'])
+
+{'<1H OCEAN', 'INLAND', 'ISLAND', 'NEAR BAY', 'NEAR OCEAN'}
+
+Now we can give values 1, 2, 3 ,4 ,5 but this approach has issues as ML algo learns some wrong patterns like 2 is more near to 1 and 4 is far away.
+
+So, we would need to do ordinal encoding
+
+from sklearn.preprocessing import OrdinalEncoder
+
+ordinal_encoder = OrdinalEncoder()
+
+housing_cat = ordinal_encoder.fit_transform(housing)
+
+housing_cat = pd.DataFrame(housing_cat, columns=housing.columns, index=housing.index)
+
+housing_cat
+
+	longitude	latitude	housing_median_age	total_rooms	total_bedrooms	population	households	median_income	ocean_proximity
+12655	239.0	569.0	28.0	3555.0	795.0	2167.0	704.0	1815.0	1.0
+15502	662.0	55.0	6.0	4411.0	853.0	1965.0	766.0	9519.0	4.0
+
+Automatic categorization of 0,1,2,3 and this ordinal encoding implies an order between categories which may not be true.
+
+So, we will use **One-Hot encoding**, here output is sparse matrix
+
+housing = housing[['ocean_proximity']]
+
+housing
+
+	ocean_proximity
+12655	INLAND
+
+15502	NEAR OCEAN
+
+from sklearn.preprocessing import OneHotEncoder
+
+onehotencoder = OneHotEncoder()
+
+housing_cat = onehotencoder.fit_transform(housing)
+
+housing_cat.toarray()
+
+array([[0., 1., 0., 0., 0.],
+       [0., 0., 0., 0., 1.],
+       [0., 1., 0., 0., 0.],
+       ...,
+       [1., 0., 0., 0., 0.],
+       [1., 0., 0., 0., 0.],
+       [0., 1., 0., 0., 0.]])
+
+onehotencoder.categories_
+
+[array(['<1H OCEAN', 'INLAND', 'ISLAND', 'NEAR BAY', 'NEAR OCEAN'],
+       dtype=object)]
+
+housing_cat = pd.DataFrame(housing_cat.toarray(), columns=['<1H OCEAN', 'INLAND', 'ISLAND', 'NEAR BAY', 'NEAR OCEAN'], index=housing.index)
+
+housing_cat
+
+	<1H OCEAN	INLAND	ISLAND	NEAR BAY	NEAR OCEAN
+12655	0.0	1.0	0.0	0.0	0.0
+15502	0.0	0.0	0.0	0.0	1.0
+2908	0.0	1.0	0.0	0.0	0.0
+14053	0.0	0.0	0.0	0.0	1.0
+20496	1.0	0.0	0.0	0.0	0.0
