@@ -3817,6 +3817,47 @@ Step 2 - Impute missing values using scikit-learn as mentioned above
 Shows how we play with data, get the max essence of data and make it accurate to make our model more accurate.
 
 
+## Day 88 - Scikit-Learn Design Principles
+
+It has a simple and consistent api
+
+Why used Scikit-Learn?
+
+1. Import classes and use algos and models to get output and focus less on implementation
+
+Ex - logistic regression, linear regression , Missing values - if we start coding then it will take long and not useful use of our time
+
+2. Consistency - All objects follow a standard interface, which makes learning and using different tools in Scikit-Learn easier
+
+3. Estimators - object which learns from data. Use .fit() method to train an Estimators
+
+In supervised learning, pass both x(features) and y(labels) to .fit(x,y)
+
+Hyperparameters (like strategy='mean' in SimpleImputer) are set when creating the object
+
+4. Transformers - transforms data - transform, fit_transform
+
+5. Predictors - model.fit, model.predict, model.score
+
+6. Inspection - hyper parameters can be accessed directly : model.param_name
+
+Learned parameters are stored with an underscore: model.coef_ , imputer.statistics_
+
+7. No Extra classes - works with numpy and pandas directly
+
+8. Composition - can build pipelines
+
+9. Sensible defaults - Most tools in Scikit-Learn work well with default settings, helps to get started quickly
+
+Note on Dataframes -
+
+Even if we input a Pandas Dataframe, the output of transformers like transform() will be a NumPy array. and we can also convert it back
+
+x = imputer.transform(housing_num)
+
+housing_tr = pd.DataFrame(X, columns=housing_num.columns, index=housing_num.index)
+
+## Day 89 - Handling categorical values
 
 
 
