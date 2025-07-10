@@ -3934,3 +3934,98 @@ housing_cat
 2908	0.0	1.0	0.0	0.0	0.0
 14053	0.0	0.0	0.0	0.0	1.0
 20496	1.0	0.0	0.0	0.0	0.0
+
+## Day 90 - Feature scaling in sklearn
+
+Most of the ML algos do not work without feature scaling.
+
+# Feature Scaling
+
+df = pd.concat([df, housing_cat], axis=1)
+
+df
+
+	longitude	latitude	housing_median_age	total_rooms	total_bedrooms	population	households	median_income	median_house_value	ocean_proximity	<1H OCEAN	INLAND	ISLAND	NEAR BAY	NEAR OCEAN
+12655	-121.46	38.52	29.0	3873.0	797.0	2237.0	706.0	2.1736	72100.0	INLAND	0.0	1.0	0.0	0.0	0.0
+15502	-117.23	33.09	7.0	5320.0	855.0	2015.0	768.0	6.3373	279600.0	NEAR OCEAN	0.0	0.0	0.0	0.0	1.0
+
+Now we will remove the categorical column and have inly numerical cols
+
+df = df.drop("ocean_proximity", axis=1)
+
+df
+
+	longitude	latitude	housing_median_age	total_rooms	total_bedrooms	population	households	median_income	median_house_value	<1H OCEAN	INLAND	ISLAND	NEAR BAY	NEAR OCEAN
+12655	-121.46	38.52	29.0	3873.0	797.0	2237.0	706.0	2.1736	72100.0	0.0	1.0	0.0	0.0	0.0
+15502	-117.23	33.09	7.0	5320.0	855.0	2015.0	768.0	6.3373	279600.0	0.0	0.0	0.0	0.0	1.0
+
+ML algos perform poorly when input features have vastly different scales
+
+Ex -
+
+In the california housing dataset we have -
+
+1. total_rooms ranges from 6 tp 39,000
+
+2. median_income ranges from 0 to 15
+
+if we do not scale these features, models will give more importance to total_rooms simply because it has larger values.
+
+Types of scaling used
+
+1. Min-Max scaling - Make the features range from [0,1] or [-1,1]
+
+formula used for normalization
+
+scaled_value = (x-min)/(max-min)
+
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler(feature_range=(-1,1))
+
+df_scaled = scaler.fit_transform(df)
+
+df_scaled   #numpy array form
+
+array([[-0.42430279,  0.27098831,  0.09803922, ..., -1.        ,
+        -1.        , -1.        ],
+       [ 0.41832669, -0.88310308, -0.76470588, ..., -1.        ,
+        -1.        ,  1.        ],
+
+# Lets give column and index to the above numpy array
+df_scaled = pd.DataFrame(df_scaled, columns = df.columns, index=df.index)
+
+df_scaled
+
+	longitude	latitude	housing_median_age	total_rooms	total_bedrooms	population	households	median_income	median_house_value	<1H OCEAN	INLAND	ISLAND	NEAR BAY	NEAR OCEAN
+12655	-0.424303	0.270988	0.098039	-0.803276	-0.743879	-0.874772	-0.737117	-0.769148	-0.764533	-1.0	1.0	-1.0	-1.0	-1.0
+15502	0.418327	-0.883103	-0.764706	-0.729664	-0.725193	-0.887217	-0.713966	-0.194852	0.091134	-1.0	-1.0	-1.0	-1.0	1.0
+
+values are in rnge [-1.1] for all features but this scaling is sensitive to outliers - extreme values cn distort the scale
+
+Ex - if we have a weight value by mistake like 950 kg for a person, then it can spoil the data in above method of scaling
+
+So, we will use 
+
+# Standardization (Z-score scaling)
+
+This method centers the data around 0 and scales it based on standard deviation.
+
+standardized_value = (x-mean)/std
+
+#standardization
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+
+df_scaled = scaler.fit_transform(df)
+
+df_scaled = pd.DataFrame(df_scaled, columns = df.columns, index=df.index)
+
+df_scaled
+
+Resulting features have zero mean andunit variance
+
+Robust to outliers compared to min-max scaling
+
+Recommended for most ML algorithms, especially when using gradient descent
