@@ -3761,7 +3761,7 @@ df.head()
 
 Now, lets plot using matplot lib for income categories
 
-# Plot Income_category
+### Plot Income_category
 import matplotlib.pyplot as plt
 df['income_cat'].value_counts().sort_index().plot.bar(rot=0, grid=True)
 plt.title("Income Categories Distribution")
@@ -3791,7 +3791,7 @@ scatter_matrix(df[attributes],figsize=(12,8))
 
 ## Day 87 - Further preprocessing and Handling Missing Data
 
-# create a copy of training data to make changes to data and not impact trainingset
+### create a copy of training data to make changes to data and not impact trainingset
 df = strat_test_set.copy()
 
 Now we will do further preprocessing on the data
@@ -3863,7 +3863,7 @@ ocean_proximity is a categorical attribute we have in housing data. We need to c
 
 We had removed categorical data earlier by using the following
 
-# Only get the numerical features from housing
+### Only get the numerical features from housing
 housing_num = housing.select_dtypes(include=[np.number])
 
 Now we will delete this and restore all columns and then find ways to convert categorical column to numerical
@@ -3939,7 +3939,7 @@ housing_cat
 
 Most of the ML algos do not work without feature scaling.
 
-# Feature Scaling
+### Feature Scaling
 
 df = pd.concat([df, housing_cat], axis=1)
 
@@ -3992,7 +3992,7 @@ array([[-0.42430279,  0.27098831,  0.09803922, ..., -1.        ,
        [ 0.41832669, -0.88310308, -0.76470588, ..., -1.        ,
         -1.        ,  1.        ],
 
-# Lets give column and index to the above numpy array
+### Lets give column and index to the above numpy array
 df_scaled = pd.DataFrame(df_scaled, columns = df.columns, index=df.index)
 
 df_scaled
@@ -4007,7 +4007,7 @@ Ex - if we have a weight value by mistake like 950 kg for a person, then it can 
 
 So, we will use 
 
-# Standardization (Z-score scaling)
+### Standardization (Z-score scaling)
 
 This method centers the data around 0 and scales it based on standard deviation.
 
@@ -4029,3 +4029,24 @@ Resulting features have zero mean andunit variance
 Robust to outliers compared to min-max scaling
 
 Recommended for most ML algorithms, especially when using gradient descent
+
+## Day 91 - Constructing Pipelines in sklearn
+
+Data - transform 1, transform 2 - pipelines help with these steps in correct order
+
+Data transformations can be Chained in a pipeline. We will do a pipeline which will include all steps
+
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
+
+mypipeline = Pipeline([
+    ("impute", SimpleImputer(strategy="median")),
+     ("standardize", StandardScaler()),
+])
+
+mypipeline.fit_transform(housing)
+
+we just have 2 transforms here, but there can be many more.
+
+file skikit-pipelines
