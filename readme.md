@@ -4037,11 +4037,15 @@ Data - transform 1, transform 2 - pipelines help with these steps in correct ord
 Data transformations can be Chained in a pipeline. We will do a pipeline which will include all steps
 
 from sklearn.pipeline import Pipeline
+
 from sklearn.impute import SimpleImputer
+
 from sklearn.preprocessing import StandardScaler
 
 mypipeline = Pipeline([
+
     ("impute", SimpleImputer(strategy="median")),
+    
      ("standardize", StandardScaler()),
 ])
 
