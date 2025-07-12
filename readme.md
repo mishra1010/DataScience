@@ -4054,3 +4054,51 @@ mypipeline.fit_transform(housing)
 we just have 2 transforms here, but there can be many more.
 
 file skikit-pipelines
+
+## Day 92 - Column Transformer and Consolidating the pipeline
+
+We had done the following earlier -
+
+1. Creating a stratified test set
+
+2. Handling missing values
+
+3. Encoding ctegorical variables
+
+4. Scaling numerical features
+
+5. Combining everything using pipeline and columntransformer
+
+This will ensure clean, modular and reproducible code for producton env and education
+
+Column transformer allows us to apply different transformations on different columns.
+
+From now we will code in vscode and noj jupyter notebook.
+
+Project-Houseprice
+
+1. Load dataset
+
+2. Prepared a stratified test set where we wanted a variety of median_income so that we can cover all data
+
+its called income_cat
+
+Goal is to have all strata of median_income in our test set and training set as well data is representative of the entire population
+
+we used stratified shuffle split for this and separated the test_set. Then we do not touch the test data and work only on training data
+
+3. Created a copy of training data set so that if we ever need the training data it would be available
+
+we also separated features and labels from housing
+
+4. List the numerical and categorical attributes
+
+5. Apply pipelines on numerical and categorical data
+
+numerical - Imputer and StandardScaler
+
+categorical - Onehotencoder
+
+6. Constructed a full pipeline by using column transformer and applying numerical pipeline on numerical attributes and categorical pipeline on categorical attributes.
+
+7. Transform the data using fit transform
