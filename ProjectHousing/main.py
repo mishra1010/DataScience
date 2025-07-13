@@ -5,6 +5,11 @@ from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import root_mean_squared_error as rmse
+from sklearn.model_selection import cross_val_score
 
 # 1. load the dataset
 housing = pd.read_csv("housing.csv")
@@ -98,3 +103,71 @@ print(housing_prepared.shape) # (16512, 13)
 #    0.        ]
 #  [-1.28105026  2.02567448 -0.13148926 ...  0.          0.
 #    0.        ]]
+
+# Day 93
+
+# 7. Train the model
+
+# Linear Regression Model
+lin_reg = LinearRegression()
+lin_reg.fit(housing_prepared, housing_labels)
+lin_preds = lin_reg.predict(housing_prepared)
+#lin_rmse = rmse(housing_labels, lin_preds)
+lin_rmses = -cross_val_score(lin_reg, housing_prepared, housing_labels,
+                            scoring="neg_root_mean_squared_error", cv=10)
+#print("Linear Regression RMSE:", lin_rmse)
+#print(f"The root mean squared error for Linear Regression is {lin_rmse:.2f}")
+print(pd.Series(lin_rmses).describe())
+
+# Decision Tree Model
+dec_reg = LinearRegression()
+dec_reg.fit(housing_prepared, housing_labels)
+dec_preds = dec_reg.predict(housing_prepared)
+# dec_rmse = rmse(housing_labels, dec_preds)
+dec_rmses = -cross_val_score(dec_reg, housing_prepared, housing_labels,
+                            scoring="neg_root_mean_squared_error", cv=10)
+#print("Linear Regression RMSE:", lin_rmse)
+#print(f"The root mean squared error for Decision Tree is {dec_rmse:.2f}")
+print(pd.Series(dec_rmses).describe())
+
+
+# Random Forest Model
+random_forest_reg = RandomForestRegressor()
+random_forest_reg.fit(housing_prepared, housing_labels)
+random_forest_preds = random_forest_reg.predict(housing_prepared)
+#random_forest_rmse = rmse(housing_labels, random_forest_preds)
+random_forest_rmses = -cross_val_score(random_forest_reg, housing_prepared, housing_labels,
+                            scoring="neg_root_mean_squared_error", cv=10)
+#print("Linear Regression RMSE:", lin_rmse)
+#print(f"The root mean squared error for Random Forest is {random_forest_rmse:.2f}")
+print(pd.Series(random_forest_rmses).describe())
+
+# output of cross validation
+
+# count       10.000000
+# mean     69204.322755
+# std       2500.382157
+# min      65318.224029
+# 25%      67124.346106
+# 50%      69404.658178
+# 75%      70697.800632
+# max      73003.752739
+# dtype: float64
+# count       10.000000
+# mean     69204.322755
+# std       2500.382157
+# min      65318.224029
+# 25%      67124.346106
+# 50%      69404.658178
+# 75%      70697.800632
+# max      73003.752739
+# dtype: float64
+# count       10.000000
+# mean     49312.110131
+# std       2117.289375
+# min      46087.049598
+# 25%      47616.183280
+# 50%      49175.746776
+# 75%      50546.638172
+# max      52921.255492
+# dtype: float64
