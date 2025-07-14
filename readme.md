@@ -4102,3 +4102,46 @@ categorical - Onehotencoder
 6. Constructed a full pipeline by using column transformer and applying numerical pipeline on numerical attributes and categorical pipeline on categorical attributes.
 
 7. Transform the data using fit transform
+
+## Day 93 - Training ML algorithms on preprocessed data
+
+Now we will train our data with LM algos.
+
+1. Linear Regression
+
+2. Decision Tree Regression
+
+3. Random Forest Regression
+
+we will use the above algos on our training set.
+
+1. Train and Test models on the training set 
+
+2. Cross-Validation - Instead of training the model once and evaluating on a holdout set,
+ k-fold cross-validation splits the training data in to kfolds(typically 10), trains the model on k-1 folds, and validates it on the remaining fold.
+ This process repeats k times.
+
+ check root mean squared error for various algos, if its very less like 0 for some algos then that is the case of overfit and for any new data coming to the system, this scenario will be error prone and would no0t give any good results. So, algos need to be generalized for future use.
+
+ For avoiding this we will use cross-validation. Lets apply it on Decision Tree
+
+ ## Day 94 - Model Persistence and Inference with Joblib in a RandomForest pipeline
+
+ we will see how to make model and put it in use
+
+ joblib helps to serialize numpy arrays. this is more preferable and suitable than pickle which does the same.
+
+ We will train the model once and then joblib helps with model persistence. We cannot train the model again and again as its an expensive process.
+
+ Generated model.pkl, pipeline.pkl
+
+ Then inferred the model to generate predictions for house price
+
+ 
+
+
+
+
+
+
+
