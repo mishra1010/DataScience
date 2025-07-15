@@ -4137,6 +4137,16 @@ we will use the above algos on our training set.
 
  Then inferred the model to generate predictions for house price
 
+ ## Day 95 Wrapping up Housing project using scikit-Learn
+
+ Next step would be to have API and UO to use this model.
+
+ We need to train ML mdels with different models than used in this case. 
+
+ Finetuning of Model - Different models have different hyper parameters. GridSearchCV can be used for hyperparameter tuning
+
+ It helps us get those hypermeters which can be trained to finetune our algorithms
+
  
 
 
