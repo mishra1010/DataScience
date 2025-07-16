@@ -4147,7 +4147,44 @@ we will use the above algos on our training set.
 
  It helps us get those hypermeters which can be trained to finetune our algorithms
 
- 
+ ## Day 96 - Introducing to Deep Learning and Neural networks
+
+Human Brain -> Neural networks -> Machines inspired by Neurons in our brain
+
+Perceptron (first neural network) -> Very basic neural network
+
+AI -> Artificial Intelligence -> Big Umbrella: making machines "smart"
+
+ML -> Machine Learning -> Subset of AI: Machines that learn from data
+
+DL -> Deep Learning -> A type of ML: uses neural network
+
+Neuron - takes input -> does some math (weight+bias) -> passes result through a rule(activation fun) -> sends the output to next layer
+
+inputs x1, x2
+
+y - w1x1 + w2x2 + b
+
+w1,w2 are the weights which needs to be adjusted to get the optimized value to fit the available dataset
+
+Neural network training means finding optimized values of these weights and biases.This is called model.
+
+x1 -> O -> O
+
+x2 -> O -> O       O -> Y
+
+x3 -> O -> O
+
+By conecting many neurons we get a neural network
+
+here we are trying to approximate a very complex function in case of a neural network. Model is a combination of weights and biases which are optimized to produce the least error.
+
+Ybar - Y -> should be minimum which shows there is minimum error and this can be achieved by getting optimized values for w1, w2  and b till the network figures out relationship between x and y. This process is called training where the magic happens.
+
+
+
+
+
 
 
 
