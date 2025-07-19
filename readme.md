@@ -4181,6 +4181,147 @@ here we are trying to approximate a very complex function in case of a neural ne
 
 Ybar - Y -> should be minimum which shows there is minimum error and this can be achieved by getting optimized values for w1, w2  and b till the network figures out relationship between x and y. This process is called training where the magic happens.
 
+## Day 97- Perceptron - the simplest neural network
+
+Its the basic building block of a neural network
+
+Prceptron = decision making unit
+
+Analogy -
+
+Imagine you ar trying to deciode whether to go out based on -
+
+- is it sunny?
+
+- is it the weekend?
+
+- Are you free today?
+
+you assign importance (weights) to each factor:
+
+Sunny - 0.6
+
+weekend - 0.3
+
+Free - 0.8
+
+Combining these , we decide to go or not go and this is exactly what perceptron does
+
+def step(x):
+    return 1 if x>0 else 0
+
+def perceptron(x1, x2, w1, w2, b):
+    y = x1*w1 + x2*w2 + b
+    return step(y)
+
+print(perceptron(0,0,1,1, -1.5))
+print(perceptron(0,1,1,1, -1.5))
+print(perceptron(1,0,1,1, -1.5))
+print(perceptron(1,1,1,1, -1.5))
+
+Simple perceptron with a step function gets proper outcome with AND logic
+
+$ python main.py
+0
+0
+0
+1
+
+Activation functions - Step, RELU, Sigmoid and tanh
+
+make perceptron non-linear like real world data so that training can happen on non-linear data.
+
+ChatGPT is a well trained NN on a well seen data (clean and polished)
+
+## Day 98 - Deep Learning - Common Terminology
+
+Perceptron - Simplest type of neural network, just one neuron. It takes inputs, multiplies them by weight, adds a bias, and pplies an activation function
+to make a decision(eg- classify 0 or 1)
+
+Neural Network - collection of interconnected layers of perceptrons(neurons). Deep NN have multiple hidden layers and can model complex patterns.
+
+Hyperparameters - settings we configure before training a model
+
+1. Learning rate - How much to adjust weights duringtraining to get optimized results
+
+2. Number of epochs - How many times the model sees the entire training dataset
+
+3. Batch size - How may samples to process before updating weights
+
+4. Number of layers of neurons - How many neurons are in each layer of the network
+
+Learning Rate (ita) - needs to be optimal for weights. controls how much toi adjust weights after each training step.
+too high may overshoot the solution and too low can make training very slow.
+
+Training - process where model learns patterns from data by updating weights based on errors between predicted and actual outputs.
+
+Backpropagation - algo used to update weights n a neural networkin batches to reach. allows model to learn from its mistakes by calculating the gradient of loss function with
+respect to each weight by applying the chain rule.
+
+Inference - It is when the trained model is used to test predictions
+
+Activation Function
+
+Epoch - Multiple epochs are used to train the data to create a model. Same data gets updated with weight values again and again.
+
+
+## Day 99 - Training Perceptron using Scikit-learn
+
+pip install scikit-learn
+
+from sklearn.linear_model import Perceptron
+
+from sklearn.datasets import make_classification
+
+from sklearn.model_selection import train_test_split
+
+x, y = make_classification(n_samples=1000, n_features=10, n_classes=2, random_state=42)
+
+x_train, x_test, y_train, y_test = train_test_split(x,y,random_state=42)
+
+clf = Perceptron(
+
+    max_iter=1000,
+
+    eta0=0.1,
+
+    random_state=42,
+
+    tol=1e-3,
+
+    shuffle=True
+
+)
+
+clf.fit(x_train, y_train)
+
+accur = clf.score(x_test, y_test)
+
+print(f"Accuracy: {accur:.2f}")
+
+$ python trainperceptron.py 
+
+Accuracy: 0.85
+
+## Day 100 - Pytorch vs Tensorflow vs Keras
+
+Libraries used to learn NN better
+
+MS CNTK - was used as backend for Keras and deprecated now
+
+Keras - 2015, Make deep learningsimple, library to use TF for ease of use
+
+TensorFlow - Google, 2015 - computational graph framework, represents comoutations as nodes in a graph
+
+PyTorch - Facebook, 2016 - Dynamic computation graphs
+
+Purpose of TF and PyT is to train Deep Learning Models.
+
+In this course we will see Keras and TensorFlow is the best to learn
+
+
+
+
 
 
 
