@@ -4319,6 +4319,18 @@ Purpose of TF and PyT is to train Deep Learning Models.
 
 In this course we will see Keras and TensorFlow is the best to learn
 
+## Day 101 - Install TensorFlow
+
+Tensorflow is a framework for creating deep learning models
+
+pip install Tensorflow
+
+import tensorflow as TF
+
+ > tf 
+
+Next we will use tf to train deep learning models
+
 
 
 
