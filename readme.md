@@ -4331,6 +4331,26 @@ import tensorflow as TF
 
 Next we will use tf to train deep learning models
 
+## Day 102 - Understanding and visualizing MNIST Dataset
+
+MNIST is a dataset of handwritten digits that is widely used for training and teting in the field of machine learning and image processing.
+
+plt.figure(figsize=(10,2))
+
+for i in range(10):
+
+    plt.subplot(1,10,i+1)
+
+    plt.imshow(x_train[i], cmap="gray")
+
+    plt.axis("off")
+
+    plt.title(y_train[i])
+
+plt.tight_layout()
+
+plt.show()
+
 
 
 
