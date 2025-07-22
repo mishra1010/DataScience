@@ -4351,8 +4351,45 @@ plt.tight_layout()
 
 plt.show()
 
+## Day 103 - Training a NN using Tensorflow with MNIST Dataset
+
+Last session, we understood what is available in MNIST dataset and visualized the same. Now, we will train a neural network using Tensorflow
+
+Here, we will create a simple NN which learns to classify the hand written digits from 0 to 9 in the MNIST dataset.
+
+when we input these images 0 to 9 , our model will be able to predict the same.
+
+File - MnistNN.ipynb
+
+test_loss, test_acc = model.evaluate(x_test, y_test)
+
+print(f"Test accuracy is {test_acc}")
 
 
+Error
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+Cell In[73], line 1
+----> 1 test_loss, test_acc = model.evaluate(x_test, y_test)
+      2 print(f"Test accuracy is {test_acc}")
+
+File C:\ProgramData\anaconda3\Lib\site-packages\keras\src\utils\traceback_utils.py:122, in filter_traceback.<locals>.error_handler(*args, **kwargs)
+    119     filtered_tb = _process_traceback_frames(e.__traceback__)
+    120     # To get the full stack trace, call:
+    121     # `keras.config.disable_traceback_filtering()`
+--> 122     raise e.with_traceback(filtered_tb) from None
+    123 finally:
+    124     del filtered_tb
+
+File C:\ProgramData\anaconda3\Lib\site-packages\keras\src\trainers\data_adapters\data_adapter_utils.py:115, in check_data_cardinality(data)
+    111     sizes = ", ".join(
+    112         str(i.shape[0]) for i in tree.flatten(single_data)
+    113     )
+    114     msg += f"'{label}' sizes: {sizes}\n"
+--> 115 raise ValueError(msg)
+
+ValueError: Data cardinality is ambiguous. Make sure all arrays contain the same number of samples.'x' sizes: 10000
+'y' sizes: 60000
 
 
 
