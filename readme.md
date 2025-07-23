@@ -4392,6 +4392,15 @@ ValueError: Data cardinality is ambiguous. Make sure all arrays contain the same
 'y' sizes: 60000
 
 
+## Day 104 - Web Development for data scientist
+
+Creating model and how to expose this model for end users.
+
+HTML
+
+CSS
+
+Flask (Python Framework) to build lightweight web applications and apis
 
 
 
