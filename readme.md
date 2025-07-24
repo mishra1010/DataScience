@@ -4403,7 +4403,11 @@ CSS
 Flask (Python Framework) to build lightweight web applications and apis
 
 
+## Day 105 - HTML for Data Scientists
 
+Webdev\index.html
+
+body, header, footer, main, div, span, image
 
 
 
