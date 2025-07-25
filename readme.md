@@ -4409,6 +4409,16 @@ Webdev\index.html
 
 body, header, footer, main, div, span, image
 
+## Day 107 - CSS for Data Scientists
+
+select content and do ctrl + / to comment out multiple lines
+
+<style>
+        .logo{
+            color:red
+        }
+    </style>
+
 
 
 

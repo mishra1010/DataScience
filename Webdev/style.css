@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.logotext{
+    color: blueviolet;
+    font-size: 2em;
+    font-weight: bold;
+
+}
+
+nav{
+    padding: 12px 5px;
+    display: flex;
+    align-items: center;
+    background-color: black;
+    color: blue;
+
+}
