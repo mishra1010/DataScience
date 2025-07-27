@@ -4419,6 +4419,36 @@ select content and do ctrl + / to comment out multiple lines
         }
     </style>
 
+## Day 106 - Infroduction to flask
+
+Flask is a python package which helps to host web applications backend
+
+activate anaconda env if you are using anaconda
+
+pip install flask
+
+run the flask app to start the server
+
+XXXXn@Tools MINGW64 /c/ProgramData/anaconda3/Scripts
+
+$ python c:/DataScience/DataScience/Webdev/main.py
+
+ * Serving Flask app 'main'
+
+ * Debug mode: on
+
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+
+ * Running on http://127.0.0.1:5000
+
+Press CTRL+C to quit
+
+ * Restarting with watchdog (windowsapi)
+
+
+
+
+
 
 
 
