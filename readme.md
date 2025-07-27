@@ -4446,6 +4446,18 @@ Press CTRL+C to quit
  * Restarting with watchdog (windowsapi)
 
 
+## Day 107 - Static and Templates folder in Flask
+
+Suppose we want to make an exe file for users to download. How top do that?
+
+We saw how to define routes in last session
+
+we will make a static and templates folder
+
+static - we can add exe file to download or style.css
+
+templates - add index.html and use render_template import in main.py. Then we can return the html file in about function to get the html file
+renered
 
 
 
