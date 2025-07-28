@@ -4457,7 +4457,26 @@ we will make a static and templates folder
 static - we can add exe file to download or style.css
 
 templates - add index.html and use render_template import in main.py. Then we can return the html file in about function to get the html file
-renered
+rendered
+
+## Day 108 - Changing static path and static folders
+
+How can we change the default static path and static folders, lets see here.
+
+we can change static physical folder by adding static_folder='assets' in flask object
+
+and can add url as another parameter to use static url 
+
+
+app = Flask(__name__, static_folder='assets', static_url_path='/files')
+
+The above properties can lead to issues if someone edits these parameters and hence we need to use the following in html file in templates
+
+ <div>
+        About Page
+        {{url_for("static", filename="style.css")}}
+    </div>
+
 
 
 
