@@ -4444,7 +4444,7 @@ WARNING: This is a development server. Do not use it in a production deployment.
 Press CTRL+C to quit
 
  * Restarting with watchdog (windowsapi)
-
+-------------------------------------------------------------------------
 
 ## Day 107 - Static and Templates folder in Flask
 
@@ -4477,9 +4477,29 @@ The above properties can lead to issues if someone edits these parameters and he
         {{url_for("static", filename="style.css")}}
     </div>
 
+## Day 109 - Handling Forms in Flask
 
+Form can be added with Form  action and method. input type can be username, password and then submit
 
+Get the values in function, print and return
 
+def home():
+
+    #return "<p>Hello, World!</p>"
+
+    if request.method == 'POST':
+
+        print(request.form)
+
+        email = request.form['email']
+
+        password = request.form['password']
+
+        print(f"Email: {email}, Password: {password}")
+
+        return "<b>Thanks for using myApp!</b>"
+        
+    return render_template('index.html')
 
 
 
