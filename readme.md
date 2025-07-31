@@ -4533,9 +4533,27 @@ def home():
     {% endfor %}
 
     {{footer | safe}}
-    
+
 </body>
 
+## Day 111 - Template inheritance in Flask
 
+Websites have a consistent structure. Like headers and footers. They do not hardcode header and footer in each page. They make a base template and inherit from that.
 
+We will see how to use this using jinja2 in Flask.
 
+Here we will make a base html template and then inherit
+
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}This is my about page{% endblock %}
+
+{% block footer %}
+
+    &copy; copyright 2025 by D <a href="http://google.com/">you</a>.
+
+{% endblock %}
+
+Once we inherit, we can see the same structure in all pages of our website.
