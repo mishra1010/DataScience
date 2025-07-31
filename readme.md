@@ -4501,7 +4501,40 @@ def home():
         
     return render_template('index.html')
 
+## Day 110 - Jinja2 templating in flask
 
+File - Day110
+
+Flask uses jinja2 by default
+
+jinja2 helps writing python in html
+
+@app.route('/', methods=['GET', 'POST'])
+def home():
+
+    name = "John Doe"
+
+    lang = "Java"
+
+    luckynos = [1,5,73,25]
+
+    footer = "<p>copyright @2025 | All rights reserved</p>"
+
+    return render_template('index.html',name = name, lang = lang, lucky = luckynos, footer=footer)
+
+    for html content in python file, its injection from python to html. So use safe
+
+    <body>
+
+    Hey i am {{name}} and i am using jinja2 with {{lang}}
+    
+    {% for item in lucky %}
+        <p>{{item}} </p>
+    {% endfor %}
+
+    {{footer | safe}}
+    
+</body>
 
 
 
