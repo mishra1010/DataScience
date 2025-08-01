@@ -4557,3 +4557,9 @@ Here we will make a base html template and then inherit
 {% endblock %}
 
 Once we inherit, we can see the same structure in all pages of our website.
+
+## Day 112 - Message Flashing in Flask
+
+A way to flash messages. Temporary messages displayed from backend to frontend
+
+

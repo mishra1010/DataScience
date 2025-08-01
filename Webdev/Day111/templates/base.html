@@ -8,6 +8,16 @@
 </head>
 <body>
     <nav> This is mynavbar</nav>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class="flashes">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
     <div id="content">{% block content %}{% endblock %}</div>
     <div id="footer">
         {% block footer %}
