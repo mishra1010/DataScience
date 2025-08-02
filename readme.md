@@ -4563,3 +4563,8 @@ Once we inherit, we can see the same structure in all pages of our website.
 A way to flash messages. Temporary messages displayed from backend to frontend
 
 
+## Day 113 - Query parameters in Flask
+
+Print query parameters in console and in the web page by passing variables in the render_template method along with index.html
+
+Mainly required when model is trained  with hyperparameters, these hyperparameters can be passed as query parmeters
