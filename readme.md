@@ -4568,3 +4568,7 @@ A way to flash messages. Temporary messages displayed from backend to frontend
 Print query parameters in console and in the web page by passing variables in the render_template method along with index.html
 
 Mainly required when model is trained  with hyperparameters, these hyperparameters can be passed as query parmeters
+
+
+## Day 114 - Creating API in Flask
+
