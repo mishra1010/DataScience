@@ -4572,3 +4572,4 @@ Mainly required when model is trained  with hyperparameters, these hyperparamete
 
 ## Day 114 - Creating API in Flask
 
+Use Jsonify to expose data from the api in json format for output from model
