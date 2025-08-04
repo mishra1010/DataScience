@@ -4573,3 +4573,18 @@ Mainly required when model is trained  with hyperparameters, these hyperparamete
 ## Day 114 - Creating API in Flask
 
 Use Jsonify to expose data from the api in json format for output from model
+
+## Day 115 - Intro to LLMs.
+
+Large Language Models
+
+Input (prompt) -> Output (Next word)
+
+Its trained on vast data and mostly accurate data. And Reinforcement learning is also done with human intervention.
+
+Pre-training and then Reinformcement learning with Human intervention.
+
+Training takes so much time, compute and then inference also takes time and compute
+
+We will see  LLMs memory, RAG, LLMs context etc.
+
