@@ -4588,3 +4588,33 @@ Training takes so much time, compute and then inference also takes time and comp
 
 We will see  LLMs memory, RAG, LLMs context etc.
 
+## Day 116 - History of LLMs
+
+Transformer architecture used by OpenAI to release ChatGPT
+
+Rules based system was first
+
+Turing test - 1950 
+
+Statistical models to predict next word
+
+Bag of words and Tag idf (term frequency and inverse document frequency) - ignored word order and context, was good at comparing but context was missing
+
+Word Embeddings like word2vec and glove
+
+Recurrent Neural Networks and LSTMs enabled models to process sequences but they struggled with long texts and parallel processing
+
+Transformers - Attention is all you need. Based on this we got lots of models
+
+BERT, GPT1,2,T5, 3, 3.5, 4, claude etc.
+
+Pipeline for LLM Includes
+
+1. Pre-training
+
+2. Finetuning
+
+3. Reinforcement learning with Human in the loop
+
+
+
