@@ -4616,5 +4616,17 @@ Pipeline for LLM Includes
 
 3. Reinforcement learning with Human in the loop
 
+## Day 117 - How LLMs work?
+
+LLM gives the next word in a sequence. Training LLM is resource intensive and expensive.
+
+LLM just knows about prompt and can provide data till when its trained.
+
+Context window - how many tokens LLM can process. Each chat session is a combination of the chat messages and this forms the whole
+context and is a combination of the tokens overall.
+
+
+
+
 
 
