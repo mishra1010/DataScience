@@ -4626,6 +4626,18 @@ Context window - how many tokens LLM can process. Each chat session is a combina
 context and is a combination of the tokens overall.
 
 
+## Day 118 - Retrieval Augmented Generation (RAG)
+
+LLMs knowledge limitation is solved here.
+
+LLM cannot answer questions on the data which is fed after the cutoff date when LLM is trained.
+
+How can LLM know about data in your company?
+
+Retriever - search
+
+Generator - LLM
+
 
 
 
