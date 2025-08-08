@@ -4638,6 +4638,13 @@ Retriever - search
 
 Generator - LLM
 
+## Day 119 - Using AI for Data Science
+
+LLM has some limitations, thats why we have advantage. LLM is a neural network and then Reinforcement learning with human makes it 
+predicts most of the items which it has been trained in.
+
+Human Brain + LLM = Epic!
+
 
 
 
