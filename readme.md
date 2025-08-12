@@ -4645,7 +4645,42 @@ predicts most of the items which it has been trained in.
 
 Human Brain + LLM = Epic!
 
+# Day 119 - Cursor AI Tutorial
 
+RAG based system which helps to write code
+
+# Day 120 - Intro to Git and Github
+
+Big code base or Enterprise codebase - Collaboration for Developers
+
+frontend
+
+backend
+
+new employee
+
+identify details about codebase using version control - Git is the version control
+
+
+# Day 121 - Understanding Git workflows
+
+Working Directory
+
+Staging area - git add
+
+Git repository - git Commit -> checkpoint
+
+# Day 122 - Practically implementing git workflow
+
+git init 
+
+git status
+
+git add <filename> or . for all files
+
+git Commit
+
+git restore
 
 
 
