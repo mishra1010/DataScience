@@ -4682,5 +4682,55 @@ git Commit
 
 git restore
 
+# Day 123 - Viewing all commits
+
+git log - shows all commits
+
+commits have unique hashes
+
+git restore filename
+
+git log --oneline
+
+# Day 124 - Advanced Tracking and Managing
+
+git checkout -f or git restore - restores the file which is ccommitted and ignores changes made
+
+git diff - see unstaged changes
+
+git diff --staged - shows staged changes
+
+git log
+
+git diff HEAD~1 HEAD
+
+git restore file - undo work directory changes
+
+git restore --staged filename --- undo staging area change
+
+old syntax for above - git reset HEAD file.TEXT
+
+Amend to last commit 
+
+git commit --amend -m "modifying old commit"
+
+Reset to a previous commit 
+
+git reset --soft HEAD~1 - gets the changes back to staging area and commit goes 1 back
+
+git reset HEAD~1 - gets changes to working directory and commit goes 1 back
+
+git reset --hard HEAD~1 - working tree clean and commit goes 1 back
+
+Ignoring files
+
+.gitignore
+
+
+
+
+
+
+
 
 
