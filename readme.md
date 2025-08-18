@@ -4726,6 +4726,70 @@ Ignoring files
 
 .gitignore
 
+# Day 125 - Branches in Git
+
+Parllel code line and independent
+
+Main 
+
+initial -> UI -> Backend -> DB 
+
+Copy main branch and create a feature branch to work on the above stuff to maintain isolation
+
+git branch - to see Branches
+
+git branch -a - to see all branches along with remote
+
+git branch feature - create branch
+
+or git switch -c feature - create and switch branch
+
+git switch main - switch to main branch
+
+# Day 126 - Essential git branch commands
+
+Advantages of branching - 
+
+code in branches are independent and changes do not impact each other
+
+git merge feature -- run it in master folder
+
+git branch -d feature - deletes feature branch
+
+# Day 127 - Merge Conflicts and How to resolve then?
+
+git log --oneline
+
+git merge feature --- run in master
+
+Conflicts
+
+git checkout --ours index.html  ------- picks branch changes on which i am there
+
+git checkout --theirs index.html ------- picks branch changes on other than mine
+
+git branch -d branchname --- delete branch
+
+git branch -m new-name
+
+git branch --branched
+
+
+# Day 128 - Intro to Github
+
+create repo 
+
+add remote - git remote add origin url
+
+
+
+
+
+
+
+
+
+
 
 
 
