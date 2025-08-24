@@ -4834,6 +4834,22 @@ git stash drop stash@{1}
 
 git stash clear -- clears all stashes
 
+# Day 133 - Using Git in vscode
+
+its an IDE along with integration. git graph extension, git lesson
+
+############### RAG Based AI Teaching Assistant #########
+
+# Day 134 - What we will build in this project?
+
+RAG - Retrieval-Augmented Generation
+
+How to make a RAG based system. We will give data for this course and then pass the context to LLM. ex-  Where is JOINs taught in this course?
+
+how to process data, tools to be used, how to parse data, where to store data
+
+
+
 
 
 
