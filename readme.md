@@ -4770,7 +4770,7 @@ git checkout --theirs index.html ------- picks branch changes on other than mine
 
 git branch -d branchname --- delete branch
 
-git branch -m new-name
+git branch -m new-name --- rename a branch , run it from that branch
 
 git branch --branched
 
@@ -4780,6 +4780,71 @@ git branch --branched
 create repo 
 
 add remote - git remote add origin url
+
+git push -u origin main
+
+# Day 129 - Essential remote repository commands
+
+git remote -v ---view remotes
+
+
+git remote add origin <url>
+
+# Day 130 - Installing and using GitHub Desktop
+
+Gives ability to achieve all functionalities from GUI as we do from commandline.
+
+# Day 131 - .gitignore in Git
+
+ignore file, files by adding .gitignore file in the repo
+
+ex-
+
+model.dat
+*.dat
+secret.txt 
+**/*.bak - ignores .bak files in any directory
+node_modules/
+*.log
+!important.log - exception. track this file even if ignored
+
+#Day 132 - Git Stash
+
+stores changes in a temporary stash. When we want to deploy a hotfix and shelve the current changes to be used after the hotfix
+
+git stash
+
+then do git commit with any other changes
+
+git push
+
+git stash list - shows all stashes
+
+git stash pop  ---- to get latest stash data back
+
+git stash save "work in progress on feature x"
+
+git stash -u ---- include untracked files
+
+git stash apply syash{@2}
+
+git stash drop
+
+git stash drop stash@{1}
+
+git stash clear -- clears all stashes
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
