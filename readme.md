@@ -4848,6 +4848,37 @@ How to make a RAG based system. We will give data for this course and then pass 
 
 how to process data, tools to be used, how to parse data, where to store data
 
+# Day 135 - Steps to create AI Assistant
+
+What we have to do here -
+
+1. Suppose we have 10 videos, we need to convert videos to text. -> use openAI whisper
+
+2. Chunking -> Datascience concepts to convert data
+
+3. Convert text to Embeddings (vectors)
+
+4. Vectorization of text (text to vector)
+
+5. Retrieval (RAG setup)
+
+6. Get response from LLM
+
+# Day 136 - Video to Text with Timestamp using whisper
+
+Whisper OpenAI Git - git clone https://github.com/openai/whisper.git
+
+Install Whisper
+
+Convert videos to text
+
+Use FFMPEG binary for Windows
+
+Add PATH for FFMPEG (programfiles/bin)
+
+Run command to convert from mp4 to mp3 and then use whisper to convert to text
+
+Use python script to convert all mp4 to mp3 to reduce load on whisper
 
 
 
