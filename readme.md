@@ -4880,6 +4880,16 @@ Run command to convert from mp4 to mp3 and then use whisper to convert to text
 
 Use python script to convert all mp4 to mp3 to reduce load on whisper
 
+# Day 137 - Converting videos to mp3 for whisper
+
+Convert videos to mp3 audio files so that they can be processed by Whisper for transcription.
+
+Step 1 - Videos to mp3
+
+Step 2 - Use OpenAI whisper to convert to text and do chunking
+
+
+
 
 
 
