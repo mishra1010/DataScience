@@ -4888,6 +4888,14 @@ Step 1 - Videos to mp3
 
 Step 2 - Use OpenAI whisper to convert to text and do chunking
 
+# Day 138 - Using Whisper to Translate and Transcribe mp3
+
+load model in local or 
+
+Use openAI wrapper for online API if local usage takes a lot of resource and time
+
+It generally takes more time to translate mp3 files to text. we can see the example by taking small files
+
 
 
 
