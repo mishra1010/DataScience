@@ -4920,6 +4920,14 @@ What we did so far?
 
 chunking {timestamp: 00:23:23, duration: 34, text: "The cat is on the wall"; video: 21, course: "Sigma web dev"}
 
+# Day 141 - Video chunking progress after 8 hours
+
+If we do not want to use local machine as it takes long to load model and chunk data, use OpenAI api along with key
+
+Next we will do Text to vector and for this we will use an embedding model
+
+We will use Ollama, install, use it for embeddings model. This might be a bit tricky
+
 
 
 
