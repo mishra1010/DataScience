@@ -4890,12 +4890,35 @@ Step 2 - Use OpenAI whisper to convert to text and do chunking
 
 # Day 138 - Using Whisper to Translate and Transcribe mp3
 
+stt.py
+
 load model in local or 
 
 Use openAI wrapper for online API if local usage takes a lot of resource and time
 
 It generally takes more time to translate mp3 files to text. we can see the example by taking small files
 
+# Day 139 - Writing sample mp3 chunks to a json file
+
+we converted mp4 to sample mp3 with the following command
+
+ffmpeg -ss 0 -i input.mp3 -t 10 -acodec copy output.mp3
+
+Now we will prepare chunks from an input file and send the chunks to output file. We can have start time , end time, text from segments.
+
+After this we can add more json parameters. We can then do vectorization of this data and then can find out what is taugh where in these transcriptions.
+
+# Day 140 - Chunking all video files with Metadata
+
+create_chunks.py
+
+Previous video we did chunking of a sample small file. In this video we will actually make chunks of all the real files.
+
+What we did so far?
+
+1. Videos to text using Whisper -> 2. Chunking (in progress) -> 3. Text to Vectors -> 4. Query to Vectors -> 5. RAG Setup 6. Get response from LLM
+
+chunking {timestamp: 00:23:23, duration: 34, text: "The cat is on the wall"; video: 21, course: "Sigma web dev"}
 
 
 
