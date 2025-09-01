@@ -4928,6 +4928,28 @@ Next we will do Text to vector and for this we will use an embedding model
 
 We will use Ollama, install, use it for embeddings model. This might be a bit tricky
 
+# Day 141 - Creating Embeddings for Video chunks
+
+Generally embeddings are stored in Vector database, but for now we will use pandas dataframes which is in-memory.
+
+Embeddings are a way to represent a sentence in a high dimension vector.
+
+json chunks (text) -> Vector -> Cosine similarity 1 -> then vectors are similar and if 0 then they are not similar or unrelated
+
+Install Ollama - double click
+
+bge-m3 -> helps to make embeddings (vectors). Why vectors? we need to identify the query is similar to which sentence.
+ It can be done using embeddings and then run cosine similarity on that.
+
+ create read_chunks.py
+
+ After installing ollama -> open powershell and run ollama pull bge-m3 (downloads 1.2 gb model)
+
+ Next session, we will work on imporving read_chunks.py y reading chunks and storing vectors and then run semantic similarity to
+ identify which sentences are similar.
+
+
+
 
 
 
