@@ -4928,7 +4928,7 @@ Next we will do Text to vector and for this we will use an embedding model
 
 We will use Ollama, install, use it for embeddings model. This might be a bit tricky
 
-# Day 141 - Creating Embeddings for Video chunks
+# Day 142 - Creating Embeddings for Video chunks
 
 Generally embeddings are stored in Vector database, but for now we will use pandas dataframes which is in-memory.
 
@@ -4948,8 +4948,15 @@ bge-m3 -> helps to make embeddings (vectors). Why vectors? we need to identify t
  Next session, we will work on imporving read_chunks.py y reading chunks and storing vectors and then run semantic similarity to
  identify which sentences are similar.
 
+# Day 143 - Bulk Embeddings and Chunk Loading with Pandas
 
+pip install pandas
 
+create embedding by passing list using ollamadocs
+
+Make Pandas dataframe with all embeddings
+
+Next we will convert query (ex- where is flexbox taught?) to embeddings (step 4) and match with above embeddings for similarity
 
 
 
