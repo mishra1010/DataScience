@@ -4958,7 +4958,11 @@ Make Pandas dataframe with all embeddings
 
 Next we will convert query (ex- where is flexbox taught?) to embeddings (step 4) and match with above embeddings for similarity
 
+# Day 144 - Pulling top matching chunks
 
+Get similar chunks to the input query
+
+use cosine similarity, np.vstack to convert list of arrays to 2D and then flatten to get 1D
 
 
 

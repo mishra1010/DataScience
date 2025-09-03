@@ -2,6 +2,8 @@ import requests
 import os
 import json
 import pandas as pd
+from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
 
 # def create_embedding(): ---- we need to create embeddings by passing a list and so, we will use another way from ollama
 #     r=requests.post("http://localhost:11434/api/embeddings", json={
@@ -49,3 +51,19 @@ print(df)
 # a = create_embedding("Cat sad on the wall")
 
 # print(a)
+incoming_query = input("Enter your query: ")
+question_embedding = create_embedding([incoming_query])[0]
+print(question_embedding)
+
+# Find similarities of question_embedding with all the chunk embeddings
+#print(np.vstack(df['embedding'].values)) # np.vstack converts the list of arrays into a 2D array
+#print(df['embedding'].shape)
+similarities = cosine_similarity(np.vstack(df['embedding']), [question_embedding]).flatten() # flatten converts 2D array to 1D array
+print(similarities)
+top_results = 3
+similarities.argsort()  # sorts the array and returns the indices of the sorted array
+
+max_indx = similarities.argsort()[::-1][0:top_results]  # top 3 results
+print(max_indx)
+new_df = df.loc[max_indx]
+print(new_df[['title','number',text', 'similarities']])
