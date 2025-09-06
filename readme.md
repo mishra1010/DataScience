@@ -4987,7 +4987,39 @@ LLM will give us the relevant data which will be still non-deterministic but mor
 
 process_incoming.py
 
-#
+# Day 147 - Creating prompt for our RAG based System
+
+Create prompt and then save the prompt to check how it looks
+
+prompt = f'''I am teaching web development using Sigma web development course.
+
+ Here are the video subtitle chunks containing video title, video number, start time in seconds, end time in seconds, the text at that time:
+
+ {new_df[["title", "number", "start", "end", "text"]].to_json()}
+ ------------------------------------
+
+"{incoming_query}"
+User asked this question related to thevideo chunks, youhave to answer where and how much content is taught where (
+
+in which video and at what timestamp) and guide the user to go to that particular video. If user asks unrelated question, tell him that you can 
+
+only answer questions related to the video content.
+'''
+
+with open("prompt.txt", "w") as f:
+
+    f.write(prompt)
+
+# for index, item in new_df.iterrows():
+
+#     print(index, item['title'], item['number'], item['text'], item['start'], item['end'])
+
+
+In next session, we will send this prompt to LLM to get a response. For now, we can take the prompt andtest with chatgpt.
+
+file - process_incoming.py
+
+# Day 148 - 
 
 
 
