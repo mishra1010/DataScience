@@ -4964,6 +4964,32 @@ Get similar chunks to the input query
 
 use cosine similarity, np.vstack to convert list of arrays to 2D and then flatten to get 1D
 
+# Day 145 - Use joblib top save dataframe
+
+In last session we created embeddings but issue was each run created the same embeddings and also processed the same data which took
+a long time for each run. Is there a process to create the chunks and embeddings once and load once and persist.
+
+read chunks, create embeddings -> process was time taking in each run
+
+Now the chuncks are read and converted to embeddings and stored/persisted in joblib.dump. Same will be read to process incoming query
+
+Next is to remove break for generating chunks and embeddings for all our files. For this also delete the joblib.dump (embeddings.joblib) file so that a new file is created
+with data from all files.
+process_incoming.py
+
+# Day 146 - Introspecting top results
+
+Next we can ask our queries and see thetop matching results. Then we will be sending these results to LLM and ask where is the incoming
+query exactly available?
+
+Now we will get all the top matching results from the chunk embeddings. Next we will send this result to LLM as context and see the response. And then
+LLM will give us the relevant data which will be still non-deterministic but more deterministic than the normal LLM as we have RAG context here.
+
+process_incoming.py
+
+#
+
+
 
 
 
